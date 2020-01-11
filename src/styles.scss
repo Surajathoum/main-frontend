@@ -1,0 +1,841 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "./scss/material-icons";
+@import "./scss/material";
+@import "./scss/main";
+@import "scss/modal";
+@import "./scss/utils";
+@import "./scss/responsive";
+@import "./scss/variables";
+@import "./scss/theme";
+.mat-drawer-inner-container {
+  overflow: unset !important;
+}
+.element::-webkit-scrollbar {
+  width: 0 !important;
+}
+.element {
+  overflow: -moz-scrollbars-none;
+}
+.element {
+  -ms-overflow-style: none;
+}
+body {
+  background-color: #2e0154;
+  scrollbar-width: none;
+}
+i.material-icons:before{display:none;}
+
+@font-face {
+  font-family: "Muli-Bold";
+  font-display: auto;
+  src: local('Muli-Bold'), url("/assets/fonts/Muli/Muli-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Muli-Regular";
+  font-display: auto;
+  src: local('Muli-Regular'), url("/assets/fonts/Muli/Muli-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Muli-ExtraLight";
+  font-display: auto;
+  src: local('Muli-ExtraLight'), url("/assets/fonts/Muli/Muli-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Muli-SemiBold";
+  font-display: auto;
+  src: local('Muli-SemiBold'), url("/assets/fonts/Muli/Muli-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DINPro";
+  font-display: auto;
+  src: local('DINPro'), url("/assets/fonts/DINpro/DINPro.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "DINPro-Medium";
+  font-display: auto;
+  src: local('DINPro-Medium'), url("/assets/fonts/DINpro/DINPro-Medium.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "DINPro-Bold";
+  font-display: auto;
+  src: local('DINPro-Bold'), url("/assets/fonts/DINpro/DINPro-Bold.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "DINPro-Light";
+  font-display: auto;
+  src: local('DINPro-Light'), url("/assets/fonts/DINpro/DINPro-Light.ttf") format("truetype");
+}
+
+.acediff__wrap {
+  position: relative !important;
+  height: 400px !important;
+}
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  background: rgba(0, 0, 0, 0.8) !important;
+  opacity: 0.6 !important;
+}
+
+:host::ng-deep .mat-tab-label {
+  color: #fff !important;
+  opacity: 1 !important;
+  font-family: "Muli-Regular" !important;
+}
+.mat-accordion {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+.mat-expansion-panel {
+  .mat-expansion-panel-header {
+  height: auto !important;
+  // align-items: flex-start;
+  padding: 12px 24px;
+  line-height: 1.8em;;
+  }
+}
+.mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
+  background: transparent !important;
+}
+input, textarea, select, button {
+  font-family: Muli-ExtraLight;
+}
+.mat-tab-label,
+.mat-tab-group,
+.mat-tab-label-content {
+  font-family: "Muli-Regular" !important;
+  color: #fff !important;
+  opacity: 1 !important;
+  font-size: 18px !important;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #fff !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.acceptBtn {
+  color: #3b016b;
+  background: #fff;
+  border-radius: 20px;
+  /* padding: 8px; */
+  width: 140px;
+  height: 42px;
+  border: none;
+}
+
+button:focus {
+  outline: 0;
+  outline-width: 0px;
+  outline: none !important;
+}
+
+.mat-button {
+  border-radius: 20px !important;
+}
+
+.mat-form-field-infix .mat-form-field-label,
+.mat-select-value {
+  color: rgba(255, 255, 255, 0.54) !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: rgba(185, 166, 166, 0.42) !important;
+}
+.mat-select-value {
+  color: #ccc !important;
+}
+
+.mat-select-arrow {
+  color: rgba(249, 249, 249, 0.54) !important;
+}
+.mat-divider {
+  border-top-color: #fafafa1a !important;
+  margin-bottom: 8px;
+}
+
+.mat-input-element:disabled,
+.mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after {
+  color: #fff !important;
+}
+
+.mat-card {
+  background: #2e0154;
+}
+
+.mat-menu-panel {
+  background-color: #2e0154;
+  color: #fff;
+}
+
+.mat-list-item-content {
+  font-weight: 100;
+  font-family: Muli-Regular;
+}
+
+.mat-checkbox-label {
+  font-family: Muli-Regular;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+.mat-checkbox-frame {
+  border-color: #fff;
+  border-radius: 50% !important;
+}
+
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+  background-color: #fff !important;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #fff !important;
+}
+.mat-checkbox-checkmark-path {
+  stroke: #22013f !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #fff !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #fefcff47 !important;
+}
+
+.mat-tab-header-pagination-chevron {
+  border-color: #fff !important;
+  opacity: 0.7;
+}
+
+.mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+  border-color: #fff !important;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.mat-drawer-end {
+  padding: 20px !important;
+}
+
+::-webkit-scrollbar {
+  margin-left: 0px;
+  height: 0;
+  width: 0;
+  background: transparent;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #5F407A;
+  background-color: #2e0154;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #2e0154;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #5f407a;
+}
+
+.mat-drawer-container {
+  background-color: #2e0154 !important;
+  color: #fff !important;
+}
+
+// .mat-dialog-container {
+//   background-color: #000 !important;
+// }
+
+.mat-dialog-container {
+  background-color: transparent !important;
+}
+
+.cdk-global-overlay-wrapper {
+  background-color: #000 !important;
+  opacity: 0.8 !important;
+}
+
+.floating-label {
+  font-family: Muli-ExtraLight;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.floating-label1 {
+  font-family: Muli-ExtraLight;
+  position: relative;
+  margin-bottom: 45px;
+}
+.floating-input {
+  font-size: 13px;
+  display: inline-block;
+  width: 92%;
+  height: 38px;
+  background-color: transparent;
+  background: #a797b9;
+  border-radius: 25px;
+  color: #12071e;
+  outline: none;
+  border: none;
+  padding: 4px 8px 6px 15px;
+  font-family: Muli-ExtraLight;
+  box-sizing: border-box;
+
+}
+.floating-select {
+  font-size: 14px;
+  display: block;
+  width: 100%;
+  height: 38px;
+  background-color: transparent;
+  background: #a797b9;
+  border-radius: 25px;
+  color: #12071e;
+  outline: none;
+  border: none;
+  padding: 4px 8px 0 15px;
+  font-family: Muli-ExtraLight;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 6px;
+}
+
+.floating-input:focus {
+  outline: none;
+  background: #fff;
+  color: #22013f;
+}
+
+.floating-select:focus {
+  outline: none;
+  background: #fff;
+  color: #22013f;
+}
+
+.floating-label label,
+.floating-label1 label {
+  color: #484646;
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  padding: 0 10px;
+  font-family: Muli-ExtraLight;
+}
+
+.floating-input:focus ~ label,
+.floating-input:not(:placeholder-shown) ~ label {
+  top: -24px;
+  font-size: 14px;
+  color: #f9f9fb;
+}
+
+.floating-select:focus ~ label,
+.floating-select:not([value=""]):valid ~ label {
+  top: -24px;
+  font-size: 14px;
+  color: #f9f9fb;
+}
+
+input.ng-touched.ng-invalid[required] {
+ // border: 1px solid #f3120e !important;
+  border: 1px solid #f3120e !important;
+  border-radius: 20px !important;
+  box-shadow: 0 0 5px 0 #fc5e5e  !important;
+  border-style: solid  !important;
+  border-width: 1px  !important;
+  //border-image-source: linear-gradient(to right, rgba(255, 95, 95, 0.44) 0%, #ff5f5f 100%)  !important;
+  border-image-slice: 1  !important;
+}
+
+form.submitted input[type="text"].ng-invalid,
+form.submitted input[type="textarea"].ng-invalid,
+form.submitted input[type="ng-select"].ng-invalid,
+form.submitted input[type="email"].ng-invalid,
+form.submitted input[type="date"].ng-invalid,
+form.submitted input[type="password"].ng-invalid {
+  border: 1px solid #f3120e !important;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.hovicon {
+  display: inline-block;
+  background: transparent;
+
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.hovicon:after {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  content: "";
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+
+  -webkit-animation: sonarEffect 1.3s ease-out 75ms infinite;
+  -moz-animation: sonarEffect 1.3s ease-out 75ms infinite;
+  animation: sonarEffect 1.3s ease-out 75ms infinite;
+}
+
+@-webkit-keyframes sonarEffect {
+  0% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #3851bc, 0 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #3851bc, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    -webkit-transform: scale(1.5);
+    opacity: 0;
+  }
+}
+@-moz-keyframes sonarEffect {
+  0% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #3851bc, 0 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #3851bc, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    -moz-transform: scale(1.5);
+    opacity: 0;
+  }
+}
+@keyframes sonarEffect {
+  0% {
+    opacity: 1;
+    box-shadow: inset 0 10px 10px 10px #bc74f7, 0 0 10px 10px #bc74f7 0 0 0 10px #bc74f7;
+    transform: scale(0);
+  }
+  20% {
+    opacity: 1;
+    box-shadow: inset 0 10px 10px 10px #bc74f7, 0 0 10px 10px #bc74f7 0 0 0 10px #bc74f7;
+    transform: scale(0.2);
+  }
+
+  40% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 2px #bc74f7, 0 0 10px 10px #bc74f7, 0 0 0 10px #bc74f7;
+    transform: scale(0.4);
+  }
+  60% {
+    opacity: 0.6;
+    box-shadow: 0 0 0 2px #bc74f7, 0 0 10px 10px #bc74f7, 0 0 0 10px #bc74f7;
+    transform: scale(0.6);
+  }
+  80% {
+    opacity: 0.4;
+    box-shadow: 0 0 0 2px #bc74f7, 0 0 10px 10px #bc74f7, 0 0 0 10px #bc74f7;
+    transform: scale(0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 2px #bc74f7, 0 0 0 0px #bc74f7, 0 0 0 1px #bc74f7;
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+// spinner css
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 19px;
+  height: 24px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: 6px;
+  border: 1.5px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media only screen and (min-width: 2560px) {
+  .mat-tab-label, .mat-tab-group, .mat-tab-label-content{
+    padding-bottom: 5px;
+  }
+  .Houm-FAQs-Privacy h4{
+    line-height: 60px;
+    font-size: 1.25em !important;
+  }
+  .mat-tab-list{
+    padding-top: 20px;
+  }
+  .home_bg_privacy p{
+    line-height: 50px !important;
+    font-size: 1.35em !important;
+  }
+  .home_bg_privacy ol li p{
+    font-size:0.65em !important;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .mat-tab-label, .mat-tab-group, .mat-tab-label-content{
+    padding-bottom: 5px;
+  }
+  .Houm-FAQs-Privacy h4{
+    line-height: 60px;
+    font-size: 1.25em !important;
+  }
+  .mat-tab-list{
+    padding-top: 20px;
+  }
+  .home_bg_privacy p{
+    line-height: 50px !important;
+    font-size: 1.35em !important;
+  }
+  .home_bg_privacy ol li p{
+    font-size:0.65em !important;
+  }
+}
+
+/*Ripple Effect*/
+.button {
+  font-family: Muli-ExtraLight;
+  background-position: center !important;
+  transition: background 0.8s;
+  color: #f4f4f4;
+  text-transform: capitalize;
+  outline: none;
+  border-radius: 32px;
+  font-size: 14px;
+  border: 2px solid #c588ff;
+  padding: 8px 15px;
+  cursor: pointer;
+  background-color: #bd6dff;
+  position: relative;
+  box-shadow: 0 0 5px 0 rgba(181, 105, 243, 0.5);
+  background-image: linear-gradient(89deg, #bd6dff 0%, #1a0e0e 100%);
+}
+.button:hover {
+  //background: #725991 radial-gradient(circle, transparent 1%, rgb(209, 161, 255) 1%) center/15000% !important;
+  box-shadow: 0 0 2.5px 2px rgba(155, 25, 255, 0.29);
+  border: 2px solid #9b19ff;
+  background-image: none;
+  background-color: #3c2166;
+  background: #3c2166 radial-gradient(circle, transparent 1%, rgb(209, 161, 255) 1%) center/15000%;
+}
+.button:active {
+  background-color: #bd6dff;
+  background-size: 100% !important;
+}
+.icon-button {
+  background: #d09fff;
+  border-radius: 16px;
+  cursor: pointer;
+  padding: 0px 12px;
+  color: #000000;
+  box-shadow: none;
+  border: none;
+  height: 20px;
+  .button-icon {
+    font-size: 20px;
+    margin: 0;
+    float: left;
+  }
+}
+.icon-button:hover {
+  background: #7f49be;
+  color: #FFFFFF;
+}
+.ripple:focus:not(:active), .icon-button:focus:not(:active), button:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.3) 10%, transparent 10%);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 0 0;
+  animation: ripple .5s;
+}
+@keyframes ripple {
+  from {
+    background-size: 0 0;
+  }
+  to {
+    background-size: 1000% 1000%;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .button {
+    font-size: 1.1em;
+    padding: 10px 20px;
+  }
+.icon-button {
+padding: 0px 16px;
+height: 30px;
+.button-icon {
+font-size: 30px;
+}
+}
+.icon-button:hover {
+}
+}
+@media only screen and (min-width: 2560px) {
+  .button {
+    font-size: 1.1em;
+    padding: 12px 25px;
+  }
+.icon-button {
+padding: 0px 16px;
+height: 32px;
+.button-icon {
+font-size: 32px;
+}
+}
+.icon-button:hover {
+}
+}
+#page-loading{
+  display: block;
+  position: fixed;
+  z-index: 100;
+  left: 30%;
+  bottom: 0;
+  right: 30%;
+  top: 35%;
+  text-align: center;
+}
+.loader-text{
+  font-family: Muli-Regular;
+  font-size: 3vw;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+}
+.meter {
+    height: 20px;  /* Can be anything */
+    position: relative;
+    margin: 20px 0 20px 0; /* Just for demo spacing */
+    background: #ffffff;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    /* padding: 10px; */
+    -webkit-box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+    -moz-box-shadow   : inset 0 -1px 1px rgba(255,255,255,0.3);
+    box-shadow        : inset 0 -1px 1px rgba(255,255,255,0.3);
+}
+.meter > span {
+    display: block;
+    height: 100%;
+    -webkit-border-top-right-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    -moz-border-radius-topright: 20px;
+    -moz-border-radius-bottomright: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    -webkit-border-top-left-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -moz-border-radius-topleft: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow:
+      inset 0 2px 9px  rgba(255,255,255,0.3),
+      inset 0 -2px 6px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+}
+.meter > span:after, .animate > span > span {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-image:
+       -webkit-gradient(linear, 0 0, 100% 100%,
+          color-stop(.25, rgba(255, 255, 255, .2)),
+          color-stop(.25, transparent), color-stop(.5, transparent),
+          color-stop(.5, rgba(255, 255, 255, .2)),
+          color-stop(.75, rgba(255, 255, 255, .2)),
+          color-stop(.75, transparent), to(transparent)
+       );
+    background-image:
+        -moz-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, .2) 25%,
+          transparent 25%,
+          transparent 50%,
+          rgba(255, 255, 255, .2) 50%,
+          rgba(255, 255, 255, .2) 75%,
+          transparent 75%,
+          transparent
+       );
+    z-index: 1;
+    -webkit-background-size: 50px 50px;
+    -moz-background-size: 50px 50px;
+    background-size: 50px 50px;
+    -webkit-animation: move 2s linear infinite;
+    -moz-animation: move 2s linear infinite;
+       -webkit-border-top-right-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+           -moz-border-radius-topright: 20px;
+        -moz-border-radius-bottomright: 20px;
+               border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        -webkit-border-top-left-radius: 20px;
+     -webkit-border-bottom-left-radius: 20px;
+            -moz-border-radius-topleft: 20px;
+         -moz-border-radius-bottomleft: 20px;
+                border-top-left-radius: 20px;
+             border-bottom-left-radius: 20px;
+    overflow: hidden;
+}
+.animate > span:after {
+    display: none;
+}
+@-webkit-keyframes move {
+    0% {
+       background-position: 0 0;
+    }
+    100% {
+       background-position: 50px 50px;
+    }
+}
+@-moz-keyframes move {
+    0% {
+       background-position: 0 0;
+    }
+    100% {
+       background-position: 50px 50px;
+    }
+}
+.white > span {
+    background-color: #441277;
+    background-image: -moz-linear-gradient(top, #441277, #ffffff);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #441277),color-stop(1, #ffffff));
+    background-image: -webkit-linear-gradient(#441277, #ffffff);
+}
+
+.nostripes > span > span, .nostripes > span:after {
+    -webkit-animation: none;
+    -moz-animation: none;
+    background-image: none;
+}
+:not(.material-icons-loaded) .mat-icon:not([fontSet]) {
+  display: none;
+}
+.miloaderdiv {
+  margin-top: -20px;
+}
+.miconloader{
+  color: transparent;
+  margin-top: -20px;
+}
+input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+.custom-dropdown-arrow {
+  position: relative;
+  .custom--text-icon {
+    position: absolute;
+    color: #000;
+    top: 2px;
+    right: 18px;
+    font-size: 20px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+::-webkit-input-placeholder {
+  color: #444444;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color:  #444444;
+}
+:-ms-input-placeholder {
+  color:  #444444;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color:  #444444;
+}
+/*** iPhone and iOS Form Input Zoom Fixes ***/
+/* Fix Input Zoom on devices older than iPhone 5: */
+@media screen and (device-aspect-ratio: 2/3) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 14px; }
+}
+/* Fix Input Zoom on iPhone 5, 5C, 5S, iPod Touch 5g */
+@media screen and (device-aspect-ratio: 40/71) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 14px; }
+}
+/* Fix Input Zoom on iPhone 6, iPhone 6s, iPhone 7  */
+@media screen and (device-aspect-ratio: 375/667) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 14px; }
+}
+/* Fix Input Zoom on iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus, iPhone 8, iPhone X, XS, XS Max  */
+@media screen and (device-aspect-ratio: 9/16) {
+    select, textarea, input[type="text"], input[type="password"],
+    input[type="datetime"], input[type="datetime-local"],
+    input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"],
+    input[type="url"]{ font-size: 14px; }
+}

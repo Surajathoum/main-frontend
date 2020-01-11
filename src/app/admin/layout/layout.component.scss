@@ -1,0 +1,60 @@
+@import '~src/scss/variables';
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .sidenav-container {
+    flex: 1;
+    background: $main-background-color;
+    .sidenav {
+      padding: 12px;
+      width: 250px;
+      background: $white;
+      .mat-drawer-inner-container{
+        overflow: unset !important;
+      }
+    }
+    .main-container {
+      padding: 16px;
+    }
+  }
+}
+.mat-drawer-inner-container{
+  overflow: unset !important;
+}
+
+
+.loader-class {
+  z-index: 10000;
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  right: 40%;
+  bottom: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000ba;
+  border-radius: 10px;
+  height: 150px;
+
+
+}
+
+.custom-class p {
+  color: white;
+  word-break: break-all;
+    padding: 0 10px;
+    margin-bottom: 8px;
+
+}
+.custom-class p span {
+  font-size: 14px
+}
+
+

@@ -1,0 +1,292 @@
+<div class="disableOverScroll">
+  <div class="icon-button fixed-closebtn" (click)="closeaboutus()" matRipple>
+    <i class="material-icons backicon closebackicon button-icon">close</i>
+  </div>
+
+  <!-- why houm starts -->
+  <section>
+    <div class="BG_whyhome1">
+      <div class="whylogo">
+        <img src="/assets/images/logo.png" width="100">
+      </div>
+      <div class="whyhomediv">
+        <h3>Why HOUM</h3>
+        <span class="whyhoumcontent" *ngIf="!showMoreText">To bring back privacy on the internet. For people to have the
+          option of having our
+          data on the internet and
+          yet have it private and not accessed by anyone else. To have a private place we own to keep our private data
+          private.</span>
+        <div *ngIf="showMoreText" class="readmoretext whyhoumcontent">
+          <div class="pr20 pb20">
+            <p>The consolidation of the ownership of data on the internet is unimaginably high.</p>
+            <p>You are one of the few billion people who are strongly connected to the internet every day. But
+              everything
+              you
+              do on the internet is done using the products and services offered by a few large companies. They see
+              everything you do and access all your personal data – files, emails, photos, everything! And you don’t own
+              anything on the internet. You are just a user of their products. Exposed and powerless!
+            </p>
+            <p>We felt that it is wrong to render a few billion people that powerless in the hands of a few large
+              companies.
+              We didn’t feel that’s right. And that’s why we built this product.</p>
+            <p> To bring back privacy on the internet. To have your data on the internet and yet have it private. Not
+              accessed
+              or owned by any other company. To own a private place on the internet where you can keep your private data
+              actually private.</p>
+            Above all, to own our online data legally and technically, for the first time!
+          </div>
+        </div>
+        <div class="readmore" (click)="loadText()">{{showButtonText}}</div>
+      </div>
+      <div class="whyhomeImgdiv">
+        <img src="/assets/images/houm-star@2x.png">
+      </div>
+      <div class="sidedotpos">
+        <img src="/assets/images/Asset 1@0.6x.png" class="sidedots">
+      </div>
+    </div>
+  </section>
+  <!-- why houm end -->
+
+  <!-- our vision strats -->
+  <section>
+    <div class="BG_whyhome2">
+      <div class="whyhomeImgdiv1">
+        <img src="/assets/images/hand-3-x@2x.png" class="whyhomediv1Img1">
+        <img src="/assets/images/drop-3-x@2x.png" class="whyhomediv1Img2">
+        <img src="/assets/images/stars-3-x@2x.png" class="whyhomediv1Img3">
+        <img src="/assets/images/dash-3-x@2x.png" class="whyhomediv1Img4">
+      </div>
+      <div class="whyhomediv1">
+        <h3>Our Vision</h3>
+        <p>Our vision is to bring privacy back on the internet. By creating the concept of private, individual ownership
+          of
+          the internet.</p>
+        <p class="mtop5">Our mission is to help build a few billion digital homes on the internet, owned by the
+          respective owner and
+          accessed only by them.</p>
+      </div>
+      <div class="sidedotpos">
+        <img src="/assets/images/Asset 2@0.6x.png" class="sidedots">
+      </div>
+    </div>
+  </section>
+  <!-- our vision end -->
+
+  <!-- board of directors stars -->
+  <section>
+    <div class="BG_whyhome3">
+      <div class="whyhomediv2">
+        <h4 class="boardtitle">Board of Directors</h4>
+        <div>
+          <div class="board-direct">
+            <img src="/assets/images/director2.png" class="directorimage">
+            <h5>Nitin Gupta</h5>
+            <span>Chairman</span>
+            <div class="link-circle"><i class="fa fa-linkedin-square" aria-hidden="true"
+                                        (click)="linkedinRedirect()"></i>
+            </div>
+          </div>
+          <div class="board-direct">
+            <img src="/assets/images/director3.png" class="directorimage">
+            <h5>Bijai Jayarajan</h5>
+            <span>Founder & CEO</span>
+            <div class="link-circle"><i class="fa fa-linkedin-square" aria-hidden="true"
+                                        (click)="linkedinRedirect1()"></i>
+            </div>
+          </div>
+          <div class="board-direct">
+            <img src="/assets/images/director4.png" class="directorimage">
+            <h5>Priya Goenka</h5>
+            <span>Director</span>
+            <div class="link-circle"><i class="fa fa-linkedin-square" aria-hidden="true"
+                                        (click)="linkedinRedirect2()"></i>
+            </div>
+          </div>
+          <div class="board-direct">
+            <img src="/assets/images/director1.png" class="directorimage">
+            <h5>Elizabeth Eng</h5>
+            <span>Director</span>
+            <div class="link-circle"><i class="fa fa-linkedin-square" aria-hidden="true"
+                                        (click)="linkedinRedirect3()"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="whyhomeImgdiv2">
+        <img src="/assets/images/houm-star@2x.png">
+      </div>
+      <div class="sidedotpos">
+        <img src="/assets/images/Asset 3@0.6x.png" class="sidedots">
+      </div>
+    </div>
+  </section>
+  <!-- board of directors end -->
+
+  <!-- Benefits to Owners start -->
+  <section>
+    <div class="BG_whyhome4">
+      <div class="whyhomediv3">
+        <h3>Benefits to Owners</h3>
+        <div class="benifitblock web-view">
+          <h4 class="ben_priv">Privacy</h4>
+          <p>
+            Everything we do on the internet today is tracked by some companies. Our photos, private chats, personal
+            emails
+            -
+            all these are read, analysed and categorized by them, even though they are quite personal.
+          </p>
+          <p class="mtop3"> Building a digital houm with houm.me will give you a domain and a server of your own. This
+            means, you own
+            a
+            small piece of the internet that is entirely private to you, and no other company or its software can access
+            what
+            you store there – giving you true privacy.
+          </p>
+          <h4 class="ben_priv">Ownership</h4>
+          <p>
+            The concept of owning a piece of the internet individually is not familiar to us, because we have been using
+            products offered free by other companies. Thus, they became the owners of everything on the internet. We
+            became
+            their users. Even worse, they own all our digital assets now because we stored it on their servers under
+            their
+            domains.
+          </p>
+          <p class="mtop3">
+            You can buy a domain and a server – your digital houm and store your digital assets on your server under
+            your
+            domain. Then, you become the true owner of your digital assets, and no one else can peep.
+          </p>
+        </div>
+        <div class="benifitblock mobile-view">>
+            <mat-tab-group class="benefits-tabs">
+              <mat-tab label="Privacy">
+                <p>
+                    Everything we do on the internet today is tracked by some companies. Our photos, private chats, personal
+                    emails
+                    -
+                    all these are read, analysed and categorized by them, even though they are quite personal.
+                  </p>
+                  <p class="mtop3"> Building a digital houm with houm.me will give you a domain and a server of your own. This
+                    means, you own
+                    a
+                    small piece of the internet that is entirely private to you, and no other company or its software can access
+                    what
+                    you store there – giving you true privacy.
+                  </p>
+              </mat-tab>
+              <mat-tab label="Ownership">
+                <p>
+                    The concept of owning a piece of the internet individually is not familiar to us, because we have been using
+                    products offered free by other companies. Thus, they became the owners of everything on the internet. We
+                    became
+                    their users. Even worse, they own all our digital assets now because we stored it on their servers under
+                    their
+                    domains.
+                  </p>
+                  <p class="mtop3">
+                    You can buy a domain and a server – your digital houm and store your digital assets on your server under
+                    your
+                    domain. Then, you become the true owner of your digital assets, and no one else can peep.
+                  </p>
+              </mat-tab>
+            </mat-tab-group>
+        </div>  
+      </div>
+      <div class="whyhomeImgdiv4">
+        <img src="/assets/images/ownership@2x.png">
+      </div>
+      <div class="sidedotpos">
+        <img src="/assets/images/Asset 4@0.6x.png" class="sidedots">
+      </div>
+    </div>
+  </section>
+  <!-- Benefits to Owners end -->
+
+  <!--The Thrust starts -->
+  <section>
+    <div class="BG_whyhome5">
+      <div class="whyhomeImgdiv5">
+        <img src="/assets/images/thrust@2x.png">
+      </div>
+      <div class="whyhomediv4">
+        <h3>The Thrust</h3>
+        <p>
+          We are paranoid about data security – your data security. We have done everything we can to make sure the data
+          you
+          put in your digital houm is safe and secure and can be accessed only by you. No other company, software, bot
+          or
+          even Houm Technology Singapore Pte Ltd or its employees can access your data.
+        </p>
+        <p>
+          We are a PCI-DSS Certified company. We routinely and voluntary get tech and security audits done on our
+          systems
+          by
+          some of the Big Four audit firms. We can share details appropriately.
+        </p>
+        <p>
+          If there is a new way in which you would like us to make your data more secure, <a class="pleasetellus" (click)="openhelp()">Please tell us.</a>
+        </p>
+
+      </div>
+      <div class="sidedotpos">
+        <img src="/assets/images/Asset 5@0.6x.png" class="sidedots">
+      </div>
+    </div>
+  </section>
+  <!--The Thrust end -->
+
+  <!--Contact Us starts -->
+  <section>
+    <div class="main-back">
+      <div class="myContainer">
+        <h3 class="web-view">Contact Us</h3>
+        <h5 class="mobile-view">&nbsp;</h5>
+        <div class="freshRow">
+          <div class="addressBox">
+            <h2><img src="/assets/images/pin2.png" class="mr10" alt="">
+              Singapore</h2>
+            <p>
+              Corporate Head office
+            </p>
+            <span>
+              1 Raffles Place, #36-01 One Raffles Place, Singapore 048616
+            </span>
+          </div>
+          <div class="addressBox">
+            <h2><img src="/assets/images/pin2.png" class="mr10" alt="">
+              New York</h2>
+            <p>
+              US Subsidiary
+            </p>
+            <span>
+              37-05, 7th Street, 3rd Floor, Jackson Heights, NY 11372, USA</span>
+          </div>
+          <div class="addressBox">
+            <h2><img src="/assets/images/pin2.png" class="mr10" alt="">
+              India</h2>
+            <p>
+              Technology Development Centre
+            </p>
+            <span>
+              704, 7th Floor, B2 Wing, Boomerang, Chandivali, Andheri(E), Mumbai - 72, India
+            </span>
+          </div>
+        </div>
+        <div class="sidedotpos">
+          <img src="/assets/images/Asset 6@0.6x.png" class="sidedots1">
+        </div>
+      </div>
+      <div>
+        <p class="footerLine">Houm Technology Singapore Pte Ltd © 2019 </p>
+      </div>
+      <div class="Rounded-Rectangle-1 left-space mobile-view">
+        <button class="bnb button" (click)="redirectToReg()">
+          Build Now And Get 100 Gb Free Storage
+        </button>
+      </div>
+    </div>
+  </section>
+  <!--Contact Us end -->
+<div class="miloaderdiv"><i class="material-icons miconloader">close</i></div>
+</div>

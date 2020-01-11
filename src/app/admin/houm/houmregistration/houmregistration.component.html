@@ -1,0 +1,851 @@
+<div *ngIf="!isMobileView">
+  <article class="flex-container reg_bg mobilebg" id="contact_neighbour">
+    <section class="flexLeft" id="leftSection">
+      <div class="backiconmain">
+        <div class="back_nav icon-button" (click)="backtoMainpage()" matRipple>
+          <i class="material-icons button-icon backicon">arrow_back</i>
+        </div>
+        <div class="enterdetails">
+          <p class="header backicontext">
+            Build your private houm on the
+            internet, in 2 simple steps
+          </p>
+        </div>
+      </div>
+      <div class="letusgomain">
+        <div class="letusgosubmain">
+          <img src="/assets/images/letsgo.png" class="leftImg">
+          <div class="leftText">
+            <div class="subheader">
+              <div class="letusgotext">
+                <div>Let us get to </div>
+                <div>know you</div>
+              </div>
+              <span *ngIf="enableprofileTick">
+                <img src="/assets/images/success.svg" class="successimage">
+              </span>
+            </div>
+            <div class="superheader">
+              <div> And we will help you</div>
+              <div>choose a domain</div>
+            </div>
+          </div>
+        </div>
+        <div class="choosedomainmain">
+          <img src="/assets/images/choosedomain.png" class="leftImg">
+          <div class="leftText">
+            <div class="subheader">
+              <div class="letusgotext">Choose Domain</div>
+              <span *ngIf="enabledomainTick">
+                <img src="/assets/images/success.svg" class="successimage">
+              </span>
+            </div>
+            <div class="superheader">
+              <div>Pick a domain of</div>
+              <div> your choice</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="flexRight" id="rightSection">
+      <div class="rightmain">
+        <div *ngIf="showProfilePage" class="rightContent-xs">
+          <div class="showLetusKnow">
+            <p class="letusgorighttext">Let us get to know you</p>
+          </div>
+          <div>
+            <form #addInfo="ngForm" name="form" (ngSubmit)=" saveDetails(contactObj)" autocomplete="off">
+              <div class="floating-label1 floatingsize">
+                <div class="floatinginputmain">
+                  <div class="labClass">First name *</div>
+                  <div class="requirednameerror">
+                    <div class="errorInput">{{firstErrorMsg}}</div>
+                  </div>
+                </div>
+                <input type="text" name="firstName" class="floating-input" autocomplete="new-password" autofocus
+                  [(ngModel)]="contactObj.firstName" #firstName placeholder="Enter your first name" ngxAlphaNumerics
+                  ngxNoNumerics required (focusout)="firstCheck(firstName)">
+              </div>
+              <div class="floating-label1 floatingsize">
+                <div class="floatinginputmain">
+                  <div class="labClass">Last name</div>
+                  <div *ngIf="lastName.touched && lastName.invalid" class="requirederror">
+                    <div *ngIf="lastName.errors.required" class="errorInput">Required</div>
+                  </div>
+                </div>
+                <input type="text" placeholder="Enter your last name" ngxAlphaNumerics autocomplete="new-password"
+                  [(ngModel)]="contactObj.lastName" #lastName="ngModel" name="lastName" ngxNoNumerics
+                  class="floating-input3">
+              </div>
+              <div class="floating-label1 floatingsize">
+                <div class="floatinginputmain">
+                  <div class="labClass">Email Address *</div>
+                  <div class="requiredemailerror">
+                    <div class="errorInput">{{emailErrorMsg}}</div>
+                  </div>
+                </div>
+                <input type="email" name="emailId" class="floating-input" autocomplete="new-password"
+                  [(ngModel)]="contactObj.emailId" #emailId placeholder="Enter your email address" required
+                  (focusout)="emailCheck(emailId)" (keypress)="setBorderCol(emailId, false)">
+              </div>
+              <div class="floating-label1 floatingsize">
+                <!-- <div class="country">Country *</div> -->
+                <div class="floatinginputmain">
+                  <div class="labClass">Country *</div>
+                  <div class="requircountryerror">
+                    <div class="errorInput">{{countryErrorMsg}}</div>
+                  </div>
+                </div>
+                <span class="custom-dropdown-arrow">
+                  <input list="countryList" placeholder="Select Country" required autocomplete="new-password"
+                    [(ngModel)]="contactObj.country" name="country" #country class="floating-input1"
+                    (focusout)="countryCheck(country)" (keydown)="updateList($event)">
+                    <!-- <i class="custom--text-icon fa fa-angle-down"></i> -->
+                </span>
+                <datalist id="countryList" required>
+                  <option *ngFor="let country of countryList" [value]="country.name" required>
+                  </option>
+                </datalist>
+                <button class="Paynow SubmitLetButton button" type="submit">
+                  <span *ngIf="!loaderenable">Next</span>
+                  <span *ngIf="loaderenable" class="stage"><span class="dot-flashing"></span></span>
+                </button>
+                <!--<div class="lds-ring" *ngIf="loaderenable">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>-->
+              </div>
+              <div class="letusprogress letusprogressbar">
+                <div class="letusbar"></div>
+                <div class="letuspercent">0% Completed</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="showloadingdomainsPage" class="domainMain">
+        <div class="showLetusKnow2">
+          <div class="backiconmain">
+            <div class="back_nav_domain" *ngIf="showPaidList">
+              <i class="material-icons backicon_domain" (click)="loadPaidList()">keyboard_backspace</i>
+            </div>
+            <div class="choosedomainrightmain">
+              <span class="header1 choosedoaminrighttext">
+                Choose Domain
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="showDetailsLable">
+          <div class="backiconmain">
+            <div class="back_nav rightbackicon">
+              <i class="material-icons backicon" (click)="backtoMainpage()">keyboard_backspace</i>
+            </div>
+            <div class="choosedomainmobile">
+              <span class="header1">
+                Choose Domain
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <div *ngIf="!showPaidList">
+            <!--<div> Available Domain </div>-->
+            <div class="inputscroll3 blink-2">
+              <div *ngFor="let item of [1,2,3,4,5,6];  let i = index">
+                <div class="domainBlock_load">
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="showPaidList">
+            <div class="searchMain">
+              <div class="floating-label">
+                <input class="form-control mat-small" [(ngModel)]="filterText" type="text" name="filterText" autocomplete="off"
+                  id="filterText" placeholder="Search for your domain name" (keyup.enter)="doFilter(filterText)"
+                  class="floating-input-search floating-search floating-search-bg search">
+                <span *ngIf="usrSearchLoading" class="textbox-loading stage"><span class="dot-flashing"></span></span>
+                <i *ngIf="!usrSearchLoading" class="fa fa-search" aria-hidden="true"
+                  (click)="doFilter(filterText);"></i>
+              </div>
+
+              <!--<div class="sortby" *ngIf="!showNoDomainText" (click)="toggleArrowButton()">
+                Sort by price
+                <i class="{{sortarrow}}" aria-hidden="true"></i>
+              </div>-->
+            </div>
+            <div *ngIf="showNoDomainText" class="searcherror">{{searchResult}}</div>
+            <span class="floatingbelow"></span>
+            <div class="inputscroll blink-2">
+              <div *ngFor="let item of [1,2,3,4,5,6];  let i = index">
+                <div class="domainBlock_load">
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="progress-options-wrapper">
+          <div class="showmoreoptions">
+            <a class="optionsText" (click)="loadPaidList()">{{showButtonText}}</a>
+          </div>
+          <div class="domainprogress">
+            <div class="domainbar"></div>
+            <div class="domainpercent">20% Completed</div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="showDomainPage" class="domainMain">
+        <div class="showLetusKnow2">
+          <div class="backiconmain">
+            <div class="back_nav_domain" *ngIf="showPaidList">
+              <i class="material-icons backicon_domain" (click)="loadPaidList()">keyboard_backspace</i>
+            </div>
+            <div class="choosedomainrightmain">
+              <span class="header1 choosedoaminrighttext">
+                Choose Domain
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="showDetailsLable">
+          <div class="backiconmain">
+            <div class="back_nav rightbackicon">
+              <i class="material-icons backicon" (click)="backtoMainpage()">keyboard_backspace</i>
+            </div>
+            <div class="choosedomainmobile">
+              <p class="header1">
+                Choose Domain
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div *ngIf="!showPaidList" class="choose-d">
+            <!--<div> Available Domain </div>-->
+            <div class="">
+              <div *ngFor="let item of domainsList;  let i = index">
+                <div class="domainBlock domainSubmitbtn" (click)="enableFreeBuildButton(i)"
+                  [ngClass]="{'domainBlockActive': buildFreebutton == i, 'domainBlock': buildFreebutton !== i}">
+                  <span>{{item.domainName}}</span>
+                  <span class="domainicon"> <span class="domainAmount">{{item.price1}}</span> <i
+                      class="fa fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="domainSubmitbtn" *ngIf="buildFreebutton == i">
+                  <button class="Paynow SubmitLetButton button" (click)="saveFreeDomain(item)">
+                    <span *ngIf="!loaderenable">Build your houm</span>
+                    <span *ngIf="loaderenable" class="stage"><span class="dot-flashing"></span></span>
+                  </button>
+                  <div class="lds-ring" *ngIf="showfreeloader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="showPaidList">
+            <div class="searchMain">
+              <div class="floating-label">
+                <input class="form-control mat-small" [(ngModel)]="filterText" type="text" name="filterText"
+                  id="filterText" (keyup.enter)="doFilter(filterText)" placeholder="Search for your domain name"
+                  class="floating-input-search floating-search floating-search-bg search">
+                <span *ngIf="usrSearchLoading" class="textbox-loading stage"><span class="dot-flashing"></span></span>
+                <i *ngIf="!usrSearchLoading" class="fa fa-search" aria-hidden="true"
+                  (click)="doFilter(filterText);"></i>
+              </div>
+
+              <!--<div class="sortby" *ngIf="!showNoDomainText" (click)="toggleArrowButton()">
+                Sort by price
+                <i class="{{sortarrow}}" aria-hidden="true"></i>
+              </div>-->
+            </div>
+            <div *ngIf="showNoDomainText" class="searcherror">{{searchResult}}</div>
+            <span class="floatingbelow"></span>
+            <div class="inputscroll1">
+              <div *ngFor="let ditem of domainsPaidList;  let i = index">
+                <div class="domainBlock domainspace domainSubmitbtn" (click)="enablePaidBuildButton(i, ditem)"
+                  [ngClass]="{'domainBlockActive1': buildPaidbutton == i, 'domainBlock': buildPaidbutton !== i}">
+                  <span>{{ditem.domainName}}</span>
+                  <span class="domainicon"> <span class="domainAmount">
+                      {{ditem.indicator}} {{ditem.discount_price}}</span> <i class="fa fa-angle-right"
+                      aria-hidden="true"></i></span>
+                </div>
+                <div class="domainSubmitbtn" *ngIf="buildPaidbutton == i">
+                  <button class="Paynow SubmitLetButton button" (click)="savePaidDomain(ditem)">
+                    <span *ngIf="!loaderenable">Build your houm</span>
+                    <span *ngIf="loaderenable" class="stage"><span class="dot-flashing"></span></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="progress-options-wrapper">
+            <div class="showmoreoptions">
+              <a class="optionsText" (click)="loadPaidList()">{{showButtonText}}</a>
+            </div>
+            <div class="domainprogress">
+              <div class="domainbar"></div>
+              <div class="domainpercent">20% Completed</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!--<div *ngIf="showDetailsPage" class="detailsmain">
+        <div class="showLetusKnow3">
+          <p class="letusgorighttext">Enter Details</p>
+        </div>
+        <div class="showDetailsLable">
+          <div class="backiconmain">
+            <div class="back_nav rightbackicon">
+              <i class="material-icons backicon" (click)="backtoMainpage()">keyboard_backspace</i>
+            </div>
+            <div class="choosedomainmobile">
+              <p class="header1">
+                Enter Details
+              </p>
+            </div>
+          </div>
+        </div>
+        <form #addDetails="ngForm" name="Details" autocomplete="off">
+          <div class="new-creation">
+            <div class="create">
+              <div class="create-pswd"><img src="/assets/images/lock.png" class="detailsicons"> Create
+                Password
+              </div>
+            </div>
+            <div class="crete-inline">
+              <div class="floating-label example-half-width">
+                <input [type]="isTextFieldType ? 'password' : 'text'" name="password" required appPasswordCheck
+                  placeholder="" [(ngModel)]="detailsObj.password" value="" class="floating-input">
+                <i class="{{icon}}" aria-hidden="true" (click)="togglePasswordFieldType()"></i>
+
+                <label class="labClass">Enter your password * </label>
+              </div>
+
+              <div class="floating-label example-half-width">
+                <input [type]="isReTextFieldType ? 'password' : 'text'" name="repassword" required appPasswordCheck
+                  placeholder="" [(ngModel)]="detailsObj.repassword" value="" class="floating-input">
+                <label class="labClass">Renter Password * </label>
+                <i class="{{icon1}}" aria-hidden="true" (click)="toggleRePasswordFieldType()"></i>
+              </div>
+            </div>
+
+            <div class="create-pass">
+              <div>Your password must contain</div>
+              <div>
+                <img src="/assets/images/success.svg" class="successimage">
+                <span>8 Characters</span>
+              </div>
+              <div>
+                <img src="/assets/images/success.svg" class="successimage">
+                <span>Alphanumeric</span>
+              </div>
+              <div>
+                <img src="/assets/images/success.svg" class="successimage">
+                <span>Special character</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="new-creation">
+            <div class="create">
+              <div class="create-pswd"><img src="/assets/images/person.png" class="detailsicons">
+                Personal
+              </div>
+            </div>
+
+            <div class="crete-inline">
+
+              <div class="floating-label example-full-width">
+                <input placeholder="" appEmailCheck name="emailId" [(ngModel)]="detailsObj.emailId" required
+                  type="email" class="floating-input">
+                <label class="labClass">Email * </label>
+              </div>
+
+              <div style="width: 100%;">
+                <div class="countryBlock">
+                  <div class="floating-label">
+                    <select class="floating-input" [(ngModel)]="detailsObj.countrycode" name="countrycode" required
+                      required>
+                      <option value="" disabled selected hidden required>Code</option>
+                      <option *ngFor="let code of countryCodes" [value]="code.dial_code" required>
+                        {{code.dial_code}}
+                      </option>
+                    </select>
+                    <span class="highlight"></span>
+                    <label>Code *</label>
+                  </div>
+                </div>
+                <div class="mobileBlock">
+
+                  <div class="floating-label example-full-width">
+                    <input placeholder="" ngxNumberOnly [(ngModel)]="detailsObj.mobileNumber" name="mobileNumber"
+                      required value="" type="text" class="floating-input">
+                    <label class="labClass">Mobile Number * </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="new-creation">
+            <div class="create">
+              <div class="create-pswd"><img src="/assets/images/location.png" class="detailsicons">Address
+              </div>
+            </div>
+            <div class="crete-inline">
+              <div class="floating-label example-full-width">
+                <input placeholder="" required [(ngModel)]="detailsObj.address" name="address" type="text"
+                  class="floating-input">
+                <label class="labClass">Street Address *</label>
+              </div>
+              <div class="floating-label example-full-width">
+                <input placeholder="" [(ngModel)]="detailsObj.city" name="city" ngxAlphaNumerics required value=""
+                  type="text" class="floating-input">
+                <label class="labClass">City *</label>
+              </div>
+
+              <div class="full-width">
+                <div class="pincodemain">
+
+                  <div class="floating-label full-width">
+                    <input placeholder="" ngxNumberOnly [(ngModel)]="detailsObj.pincode" name="pincode" required
+                      value="" type="text" class="floating-input">
+                    <label class="labClass">Pincode *</label>
+                  </div>
+                </div>
+                <div class="countryMain">
+                  <div class="floating-label countrywidth">
+                    <input placeholder="" ngxAlphaNumerics [(ngModel)]="detailsObj.country" name="country" required
+                      value="" type="text" class="floating-input">
+                    <label class="labClass">Country *</label>
+                  </div>
+                </div>
+              </div>
+              <div class="payementInfo">
+                <div class="leftInfoContent">
+                  <table class="paymenttable">
+                    <tr>
+                      <td class="tabletd"></td>
+                      <td class="tabletdp">
+                        <p class="infoName">Your Houm</p>
+                      </td>
+                      <td class="widththirty"></td>
+                    </tr>
+                    <tr>
+                      <td><img src="/assets/images/www_2x.png"></td>
+                      <td>
+                        <p class="infoVal">{{houmInfo.name}}</p>
+                      </td>
+                      <td><img src="/assets/images/success.svg" class="checkMark"></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>
+                        <p class="infoName">has</p>
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><img src="/assets/images/hdd_2x.png"></td>
+                      <td>
+                        <p class="infoVal">{{houmInfo.storage.value}}
+                          {{houmInfo.storage.notation}}
+                          Storage</p>
+                      </td>
+                      <td><img src="/assets/images/success.svg" class="checkMark"></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>
+                        <p class="infoName">{{houmInfo.storage.type}}</p>
+                      </td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="leftInfoContent paymentleftmain">
+                  <table class="widtheighty">
+                    <tr *ngFor="let item of paymentVals">
+                      <td class="paymentMethodinfo"> {{item.type}}</td>
+                      <td class="paymentVal">{{item.val}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="alignBuild">
+                <button class="Paynow button" (click)="savePaidDomain(detailsObj)" [disabled]='!addDetails.form.valid'>
+                  Build your houm
+                </button>
+                <div class="progress">
+                  <div class="bar"></div>
+                  <div class="percent">95% Completed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>-->
+    </section>
+  </article>
+</div>
+<div *ngIf="isMobileView">
+  <article class="flex-container reg_bg mobilebg disableOverScroll" id="contact_neighbour">
+    <section class="flexLeft" id="leftSection">
+      <div *ngIf="showmainpage">
+        <div class="backiconmain">
+          <div class="icon-button payments-back" (click)="backtoMainpage()" matRipple>
+              <i class="material-icons button-icon">arrow_back</i>
+          </div>
+          <!--<div class="back_nav" (click)="backtoMainpage()">
+            <img src="/assets/images/group-2@2x.png" class="backicon">
+          </div>-->
+          <div class="enterdetails">
+            <p class="header backicontext">
+              Build your private houm on the
+              internet, in 2 simple steps
+            </p>
+          </div>
+        </div>
+        <div class="letusgomain">
+          <div class="letusgosubmain">
+            <img src="/assets/images/letsgo.png" class="leftImg">
+            <div class="leftText">
+              <div class="subheader">
+                <div class="letusgotext">
+                  <div>Let us get to</div>
+                  <div>know you</div>
+                </div>
+                <span *ngIf="enableprofileTick">
+                  <!--<img src="/assets/images/success.svg" class="successimage">-->
+                </span>
+              </div>
+              <span class="superheader">
+                And we will help</span><br>
+              <span class="superheader">
+                you choose a domain</span>
+            </div>
+          </div>
+          <div class="choosedomainmain">
+            <img src="/assets/images/choosedomain.png" class="leftImg">
+            <div class="leftText">
+              <div class="subheader">
+                <div class="letusgotext">Choose Domain</div>
+                <span *ngIf="enabledomainTick">
+                  <!--<img src="/assets/images/success.svg" class="successimage">-->
+                </span>
+              </div>
+              <div class="superheader">
+                <div>Pick a domain of</div>
+                <div> your choice</div>
+              </div>
+            </div>
+          </div>
+          <div class="enterdetailsmain" *ngIf="false">
+            <img src="/assets/images/enterdetails.png" class="leftImg">
+            <div class="leftText">
+              <span class="subheader">
+                <div class="letusgotext"> Enter Details</div>
+              </span>
+              <span class="superheader">
+                Make your Houm private by setting a unique password</span>
+            </div>
+          </div>
+          <div class="showNextonleft">
+            <button class="Paynow SubmitLetButton button" type="submit" (click)="shownext()"> Let's Start</button>
+          </div>
+        </div>
+      </div>
+      <div class="rightmain" *ngIf="showregpage">
+        <div class="rightContent-xs">
+          <div class="showLetusKnow">
+            <p class="letusgorighttext">Let us get to know you</p>
+          </div>
+          <div class="showDetailsLable">
+            <div class="backiconmain">
+              <div class="icon-button payments-back" (click)="backtomainpage()" matRipple>
+                  <i class="material-icons button-icon">arrow_back</i>
+              </div>
+              <!--<div class="back_nav" (click)="backtomainpage()">
+                <img src="/assets/images/group-2@2x.png" class="backicon1">
+              </div>-->
+              <div class="enterdetails">
+                <p class="header1"> Enter Details </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <form #addInfo="ngForm" name="form" (ngSubmit)=" saveDetails(contactObj)" autocomplete="off">
+              <div class="divscroll">
+                <div class="floating-label1 floatingsize">
+                  <div class="floatinginputmain">
+                    <span class="labClass">First name *</span>
+                    <span class="errorInput">{{firstErrorMsg}}</span>
+                  </div>
+                  <input type="text" name="firstName" class="floating-input" autocomplete="off" autofocus
+                    [(ngModel)]="contactObj.firstName" #firstName placeholder="Enter your first name" ngxAlphaNumerics
+                    ngxNoNumerics required (focusout)="firstCheck(firstName)">
+                </div>
+                <div class="floating-label1 floatingsize">
+                  <div class="floatinginputmain">
+                    <span class="labClass">Last name</span>
+                  </div>
+                  <input type="text" placeholder="Enter your last name" ngxAlphaNumerics autocomplete="off"
+                    [(ngModel)]="contactObj.lastName" #lastName="ngModel" name="lastName" ngxNoNumerics
+                    class="floating-input3">
+                  <!--(blur)="savereg(contactObj)" -->
+                </div>
+                <div class="floating-label1 floatingsize">
+                  <div class="floatinginputmain">
+                    <span class="labClass">Email Address *</span>
+                    <span class="errorInput">{{emailErrorMsg}}</span>
+                  </div>
+                  <input type="email" name="emailId" class="floating-input" autocomplete="off"
+                    [(ngModel)]="contactObj.emailId" #emailId placeholder="Enter your email address" required
+                    (focusout)="emailCheck(emailId)" (keypress)="setBorderCol(emailId, false)">
+                </div>
+                <!-- <div class="floating-label1 floatingsize countrytop">
+                  <div class="floatinginputmain">
+                    <div class="labClass">Country *</div>
+                    <div class="requircountryerror">
+                      <div class="errorInput">{{countryErrorMsg}}</div>
+                    </div>
+                  </div>
+                  <span class="custom-dropdown-arrow">
+                    <input list="countryList" placeholder="Select Country" required autocomplete="new-password"
+                    [(ngModel)]="contactObj.country" name="country" #country class="floating-input1"
+                    (focusout)="countryCheck(country)" (keydown)="updateList($event)">
+                     <i class="custom--text-icon fa fa-angle-down"></i>
+                    </span>
+                  <datalist id="countryList" required>
+                    <option *ngFor="let country of countryList" [value]="country.name" required>
+                    </option>
+                  </datalist>
+                </div> -->
+                <div class="floating-label1 floatingsize countrytop">
+                  <div class="floatinginputmain">
+                    <span class="labClass">Country *</span>
+                    <span class="errorInput">{{countryErrorMsg}}</span>
+                  </div>
+                  <!-- <input list="countryList" placeholder="Select Country" required autocomplete="off"
+                    [(ngModel)]="contactObj.country" name="country" #country class="floating-input1"
+                    (focusout)="countryCheck(country)" (keydown)="updateList($event)"> -->
+                    <span class="custom-dropdown-arrow">
+                    <input list="countryList" placeholder="Select Country" required
+                    [(ngModel)]="contactObj.country" name="country" class="floating-input"
+                    #country (focusout)="countryCheck(country)"
+                    (keypress)="setBorderCol(country, false)">
+                    <!-- <i class="custom--text-icon fa fa-angle-down"></i> -->
+                  </span>
+                  <datalist id="countryList" required>
+                    <!-- <option *ngFor="let country of countryList" [value]="country.name" required>
+                      </option> -->
+                    <option *ngFor="let country of countryList" [value]="country.name" required> {{country.name}}
+                    </option>
+                  </datalist>
+                </div>
+                <div class="gradientback1"></div>
+              </div>
+              <div class="mobilesavedetails">
+                <button class="Paynow mobileSubmitBtn button" type="submit">
+                  <span *ngIf="!loaderenable">Next</span>
+                  <span *ngIf="loaderenable" class="stage"><span class="dot-flashing"></span></span>
+                </button>
+              </div>
+              <div class="letusprogress letusprogressbar mobilebar">
+                <div class="letusbar"></div>
+                <div class="letuspercent">0% Completed</div>
+              </div>
+               <!-- <div class="letusprogress letusprogressbar mobilebar">
+                  <div class="letusbar"></div>
+                </div> -->
+            </form>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="showloadingdomains">
+        <div class="domainMain">
+          <div class="showDetailsLable">
+            <div class="backiconmain">
+              <div class="icon-button payments-back" (click)="backtoregpage()" matRipple>
+                  <i class="material-icons button-icon">arrow_back</i>
+              </div>
+             <!-- <div class="back_nav" (click)="backtoregpage()">
+                <img src="/assets/images/group-2@2x.png" class="backicon1">
+              </div>-->
+              <div class="enterdetailsmain">
+                <p class="header1">
+                  Choose Domain
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div *ngIf="!showPaidList">
+              <!--<div>Available Domain</div>-->
+              <div class=" blink-2">
+                <div *ngFor="let item of [1,2,3,4,5,6];  let i = index">
+                  <div class="domainBlock_load ">
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="showPaidList">
+              <div class="searchMain">
+                <div class="floating-label">
+                  <input class="form-control mat-small" [(ngModel)]="filterText" type="text" name="filterText"
+                    id="filterText" (keyup.enter)="doFilter(filterText)" placeholder="Search for your domain name"
+                    class="floating-input-search floating-search floating-search-bg search">
+                  <span *ngIf="usrSearchLoading" class="textbox-loading stage"><span class="dot-flashing"></span></span>
+                  <i *ngIf="!usrSearchLoading" class="fa fa-search" aria-hidden="true"
+                    (click)="doFilter(filterText);"></i>
+                </div>
+                <!--<div class="sortby" *ngIf="!showNoDomainText" (click)="toggleArrowButton()">
+                  Sort by price
+                  <i class="{{sortarrow}}" aria-hidden="true"></i>
+                </div>-->
+              </div>
+              <div *ngIf="showNoDomainText" class="searcherror">{{searchResult}}</div>
+              <span class="floatingbelow"></span>
+              <div class="inputscroll1 blink-2">
+                <div *ngFor="let item of [1,2,3,4,5,6];  let i = index">
+                  <div class="domainBlock_load domainspace ">
+                    <span></span>
+                  </div>
+                </div>
+                <div class="gradientback"></div>
+              </div>
+            </div>
+          </div>
+          <div class="progress-options-wrapper">
+            <div class="showmoreoptions">
+              <a class="optionsText" (click)="loadPaidList()">{{showButtonText}}</a>
+            </div>
+          </div>
+          <div class="letusprogress letusprogressbar mobilebar">
+            <div class="letusbar"></div>
+            <div class="letuspercent">0% Completed</div>
+          </div>
+          <!-- <div class="letusprogress letusprogressbar mobilebar">
+            <div class="letusbar"></div>
+          </div> -->
+        </div>
+      </div>
+      <div *ngIf="showdompage">
+        <div class="domainMain">
+          <div class="showDetailsLable">
+            <div class="backiconmain">
+              <div class="icon-button payments-back" (click)="backtoregpage()" matRipple>
+                  <i class="material-icons button-icon">arrow_back</i>
+              </div>
+              <!--<div class="back_nav" (click)="backtoregpage()">
+                <img src="/assets/images/group-2@2x.png" class="backicon1">
+              </div>-->
+              <div class="enterdetailsmain">
+                <p class="header1">
+                  Choose Domain
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div *ngIf="!showPaidList">
+              <!--<div>-->
+              <!--Available Domain-->
+              <!--</div>-->
+              <div class="">
+                <div *ngFor="let ditem of domainsList;  let i = index">
+                  <div class="domainBlock domainSubmitbtn" (click)="enableFreeBuildButton(i, ditem)"
+                    [ngClass]="{'domainBlockActive': buildFreebutton == i, 'domainBlock': buildFreebutton !== i}">
+                    <span>{{ditem.domainName}}</span>
+                    <span class="domainicon"> <span class="domainAmount">{{ditem.price1}}</span> <i
+                        class="fa fa-angle-right" aria-hidden="true"></i></span>
+                  </div>
+                </div>
+                <div class="gradientback"></div>
+              </div>
+              <div class="domainSubmitbtn btnclassdomain" *ngIf="buildFreebutton >= 0">
+                <button class="Paynow SubmitLetButton button" (click)="saveFreeDomain(freedata)">
+                  <span *ngIf="!loaderenable">Build your houm</span>
+                  <span *ngIf="loaderenable" class="stage"><span class="dot-flashing"></span></span>
+                </button>
+                <!--<div class="lds-ring" *ngIf="showfreeloader">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>-->
+              </div>
+            </div>
+            <div *ngIf="showPaidList">
+              <div class="searchMain">
+                <div class="floating-label">
+                  <input class="form-control mat-small" [(ngModel)]="filterText" type="text" name="filterText" autocomplete="off"
+                    id="filterText" (keyup.enter)="doFilter(filterText)" placeholder="Search for your domain name"
+                    class="floating-input-search floating-search floating-search-bg search">
+                  <span *ngIf="usrSearchLoading" class="textbox-loading stage"><span class="dot-flashing"></span></span>
+                  <i *ngIf="!usrSearchLoading" class="fa fa-search" aria-hidden="true"
+                    (click)="doFilter(filterText);"></i>
+                </div>
+                <!--<div class="sortby" *ngIf="!showNoDomainText" (click)="toggleArrowButton()">
+                  Sort by price
+                  <i class="{{sortarrow}}" aria-hidden="true"></i>
+                </div>-->
+              </div>
+              <div *ngIf="showNoDomainText" class="searcherror">{{searchResult}}</div>
+              <span class="floatingbelow"></span>
+              <div class="inputscroll1" *ngIf="!showloadingdomains">
+                <div *ngFor="let ditem of domainsPaidList;  let i = index">
+                  <div class="domainBlock domainspace domainSubmitbtn" (click)="enablePaidBuildButton(i, ditem)"
+                    [ngClass]="{'domainBlockActive1': buildPaidbutton == i, 'domainBlock': buildPaidbutton !== i}">
+                    <span>{{ditem.domainName}}</span>
+                    <span class="domainicon"> <span class="domainAmount">{{ditem.indicator}}
+                        {{ ditem.discount_price }}</span>
+                      <i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                  </div>
+                </div>
+                <div class="gradientback"></div>
+              </div>
+              <div class="inputscroll1 blink-2" *ngIf="showloadingdomains">
+                <div *ngFor="let item of [1,2,3,4,5,6];  let i = index">
+                  <div class="domainBlock_load domainspace ">
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="domainSubmitbtn btnclassdomain" *ngIf="buildPaidbutton >= 0">
+                <button class="Paynow SubmitLetButton button" (click)="savePaidDomain(paiddata)">
+                  <span *ngIf="!loaderenable">Build your houm</span>
+                  <span *ngIf="loaderenable" class="stage"><span class="dot-flashing"></span></span>
+                </button>
+                <!--<div class="lds-ring" *ngIf="showpaidloader">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>-->
+              </div>
+            </div>
+          </div>
+          <div class="progress-options-wrapper">
+            <div class="showmoreoptions">
+              <a class="optionsText" (click)="loadPaidList()">{{showButtonText}}</a>
+            </div>
+          </div>
+          <div class="letusprogress letusprogressbar mobilebar">
+            <div class="domainbar"></div>
+            <div class="letuspercent">20% Completed</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</div>

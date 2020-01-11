@@ -1,0 +1,8 @@
+<router-outlet (activate)="onActivate($event)">
+  <div id="page-loading" *ngIf="!loaded">
+      <p class="loader-text">It`s all coming together!</p>
+      <div class="meter white">
+          <span id="meter-bar" style="width: 100%"></span>
+      </div>
+  </div>
+</router-outlet>

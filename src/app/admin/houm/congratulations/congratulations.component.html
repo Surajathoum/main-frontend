@@ -1,0 +1,37 @@
+<div class="bgImage disableOverScroll">
+    <img src="/assets/images/logo.png" class="logo">
+    <div class="congo_start">
+        <div class="congotextBlock">
+            <p class="letusgorighttext">Congratulations</p>
+            <div class='congoSubText'>
+                <span>You can now visit your Houm at {{domain}}</span>
+                <span style="display: block;">and access 100 GB free storage </span>
+            </div>
+            <!-- <p class='congoSubText'>You can now visit your Houm at {{domain}} </p> 
+            <p class='congoSubText'>and access 100 GB free storage</p>   -->
+        </div>
+        <div class="centerscreen">
+            <!-- <img src="/assets/images/congo_scren_1x.png"> -->
+          <img [src]="congoImage" class="desktop">
+            <div class="centerdomain">{{domain}}</div>
+        </div>
+        <div class="takemehoum">
+            <button class=" button" (click)="goToHoum()">
+                Take me houm</button>
+        </div>
+        <div class="footerCongo">
+            <div class="download">
+              <span class="downloadtext">Download it on </span>
+              <img class="mr10" height="40px" src="/assets/images/google_play.png">
+              <img class="ml10" src="/assets/images/app_store.svg">
+            </div>
+            <div class="buttonblock">
+                <div class="letusprogress">
+                    <div class="letusbar"></div>
+                    <div class="letuspercent">100% Completed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

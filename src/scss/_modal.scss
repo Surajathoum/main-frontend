@@ -1,0 +1,38 @@
+s-modal {
+  /* modals are hidden by default */
+  display: none;
+
+  .s-modal {
+    /* modal container fixed across whole screen */
+        position: absolute; top: 50%;  left: 50%;  overflow: auto; transform: translate(-50%, -50%);
+    z-index: 910;
+
+    .s-modal-body {
+      padding: 0px; 
+      // background: #fff;
+      // background-color: #3B016B;
+      color: #fff;
+      font-weight: 100;
+      font-family: Muli-Regular;
+      /* margin exposes part of the modal background */
+      // margin: 40px;
+
+    }
+  }
+
+  .s-modal-background {
+    /* modal background fixed across whole screen */
+    position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+
+    /* semi-transparent black  */
+    background-color: #000; opacity: 0.75;
+
+    /* z-index must be below .s-modal and above everything else  */
+    z-index: 900;
+  }
+}
+
+body.s-modal-open {
+  /* body overflow is hidden to hide main scrollbar when modal window is open */
+  overflow: hidden;
+}

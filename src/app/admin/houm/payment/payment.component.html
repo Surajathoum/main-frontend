@@ -1,0 +1,240 @@
+<article class="flex-container reg_bg disableOverScroll" id="contact_neighbour" *ngIf="!isTransactionFailed && !isTransactionSuccess && !isTransactionLoading">
+    <div fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="16" class="payment-wrapper">
+        <div fxFlex="10" align="end">
+            <div class="icon-button payments-back" (click)="backtoMainpage()" matRipple>
+                <i class="material-icons button-icon">arrow_back</i>
+            </div>
+        </div>
+        <section class="flexLeft" id="leftSection">
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13" fxFlex.xs="13" > </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67" fxFlex.xs="67" >
+                    <div class="title"> Summary </div>
+                </div>
+                <div fxFlex="20"></div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row1">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13" fxFlex.xs="13">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67" fxFlex.xs="67">
+                    <p class="infoName">Your Houm</p>
+                </div>
+                <div fxFlex="20">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row2">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13" fxFlex.xs="13">
+                    <img src="/assets/images/www_3x.png" class="domain-logos">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67" fxFlex.xs="67">
+                    <p class="infoVal">{{baseService.houmObj.domainName}}</p>
+                </div>
+                <div fxFlex="20" align="end">
+                    <img src="/assets/images/check@2x.png" class="checkMark1">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row3">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13" fxFlex.xs="13">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67" fxFlex.xs="67">
+                    <p class="infoName">has</p>
+                </div>
+                <div fxFlex="10">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row4">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13"  fxFlex.xs="13">
+                    <img src="/assets/images/hdd_3x.png" class="domain-logos">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67" fxFlex.xs="67">
+                    <p class="infoVal">{{houmInfo.storage.value}} {{houmInfo.storage.notation}}</p>
+                </div>
+                <div fxFlex="20" align="end">
+                    <img src="/assets/images/check@2x.png" class="checkMark1">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row5">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13"  fxFlex.xs="13">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67"  fxFlex.xs="67">
+                    <p class="infoName">{{houmInfo.storage.type}}</p>
+                </div>
+                <div fxFlex="10">
+                </div>
+            </div>
+            <div class="leftInfoContent paymentleftmain">
+                <div fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="20" *ngFor="let item of paymentVals"
+                    class="payments-info-content">
+                    <div fxFlex="10" fxFlex.sm="10" fxFlex.md="10" fxFlex.xs="13"></div>
+                    <div fxFlex="60" fxFlex.sm="60" fxFlex.md="60" fxFlex.xs="47">
+                        <p class="paymentMethodinfo"> {{item.type}}</p>
+                    </div>
+                    <div fxFlex="15"  fxFlex.sm="15" fxFlex.md="15" fxFlex.xs="20" >
+                        <p class="paymentVal"><span class="float-right">{{item.indicator}}</span></p>
+                    </div>
+                    <div fxFlex="15" fxFlex.sm="15" fxFlex.md="15" fxFlex.xs="20" align="end">
+                        <p class="paymentVal"><span class="float-right">{{item.val}}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="leftInfoContent">
+                <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20">
+                    <div fxFlex="10"  fxFlex.sm="15" fxFlex.md="13" class="web-view">
+                    </div>
+                    <div>
+                        <button class="Paynow SubmitLetButton button" type="button" (click)="proceedToBuild()">
+                            <span *ngIf="!loaderenable">Start Building My Houm</span>
+                            <span *ngIf="loaderenable" class="stage"><span class="dot-flashing"></span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</article>
+<div *ngIf="isTransactionLoading" class="loadingContent disableOverScroll">
+  <span class="failedHelpText mt10 centerText"><span class="bigstage"><span class="bigdot-flashing"></span></span></span>
+  <span class="loadingtext mb20"> {{ processingMsg }}</span>
+</div>
+<div *ngIf="isTransactionFailed" class="processContent disableOverScroll">
+  <div class="centerFailed">
+    <div class="failedimg">
+        <img src="/assets/images/group@2x.png" alt="">
+    </div>
+    <span class="Transaction-failed">Transaction failed</span>
+    <span class="failedHelpText">Please try again or try a different payment method</span>
+    <button class="Paynow button" (click)="tryAgain()">
+        Try Again</button>
+  </div>
+</div>
+<div *ngIf="isTransactionSuccess" class="processContent disableOverScroll">
+  <div class="centerAlign">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20">
+        <div fxFlex="20">&nbsp;</div>
+        <div fxFlex="30" align="center">
+          <div fxLayout="row" fxLayoutAlign="center" >
+            <div fxFlex="30" align="start"><img src="/assets/images/circle-check-512@2x.png"></div>
+            <div fxFlex="70" align="start"><span class="sucesstext">Payment Successful</span></div>
+          </div>
+        </div>
+        <div fxFlex="30" align="center">
+            <span class="SuccessTransaction">Transaction details</span>
+            <div class="background">
+                <div class="leftInfoContent leftcontentmain">
+                    <table class="full-width">
+                        <tr>
+                            <td class="tabletd"></td>
+                            <td class="tabletdp">
+                                <p class="infoName">Your Houm</p>
+                            </td>
+                            <td class="widththirty"></td>
+                        </tr>
+                        <tr>
+                            <td> <img src="/assets/images/www_2x.png"></td>
+                            <td>
+                                <p class="infoVal">{{houmInfo.name}}</p>
+                            </td>
+                            <td> <img src="/assets/images/check@2x.png" class="checkMark"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <p class="infoName">has</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td> <img src="/assets/images/hdd_2x.png"></td>
+                            <td>
+                                <p class="infoVal">{{houmInfo.storage.value}} {{houmInfo.storage.notation}} Storage</p>
+                            </td>
+                            <td> <img src="/assets/images/check@2x.png" class="checkMark"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <p class="infoName">{{houmInfo.storage.type}}</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="sucessleftInfo successinfomain">
+                    <table class="widtheighty">
+                        <tr *ngFor="let item of paymentVals">
+                            <td class="paymentMethodinfo"> {{item.type}}</td>
+                            <td class="paymentVal"><span class="float-right">{{item.indicator}}</span> </td>
+                            <td class="paymentVal"><span class="float-right">{{item.val}}</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="20">
+            &nbsp;
+        </div>
+    </div>
+  </div>
+  <div class="mobileView">
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20">
+        <div fxFlex="100" align="center">
+          <img class="transSuccessImg" src="/assets/images/circle-check-512@2x.png">
+          <div class="sucesstext">Payment Successful</div>
+        </div>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="16" class="payment-wrapper">
+      <span class="SuccessTransaction">Transaction details</span>
+        <section class="flexLeft" id="leftSection">
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row1">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13" fxFlex.xs="13">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67" fxFlex.xs="67">
+                    <p class="infoName">Your Houm</p>
+                </div>
+                <div fxFlex="20">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row2">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13" fxFlex.xs="13">
+                    <img src="/assets/images/www_3x.png" class="domain-logos">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67" fxFlex.xs="67">
+                    <p class="infoVal">{{baseService.houmObj.domainName}}</p>
+                </div>
+                <div fxFlex="20" align="end">
+                    <img src="/assets/images/check@2x.png" class="checkMark1">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row3">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13" fxFlex.xs="13">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67" fxFlex.xs="67">
+                    <p class="infoName">has</p>
+                </div>
+                <div fxFlex="10">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row4">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13"  fxFlex.xs="13">
+                    <img src="/assets/images/hdd_3x.png" class="domain-logos">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67" fxFlex.xs="67">
+                    <p class="infoVal">{{houmInfo.storage.value}} {{houmInfo.storage.notation}}</p>
+                </div>
+                <div fxFlex="20" align="end">
+                    <img src="/assets/images/check@2x.png" class="checkMark1">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row5">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13"  fxFlex.xs="13">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67"  fxFlex.xs="67">
+                    <p class="infoName">{{houmInfo.storage.type}}</p>
+                </div>
+                <div fxFlex="10">
+                </div>
+            </div>
+        </section>
+    </div>
+  </div>
+</div>

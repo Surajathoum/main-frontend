@@ -1,0 +1,485 @@
+<!-- Houm-FAQs   starts-->
+<div class="whyhoum disableOverScroll">
+  <div class="Houm-FAQs">
+    <div class="houm_backicon_main">
+      <!-- <div class="back_nav" (click)="closefaqs()">
+        <i class="material-icons backicon">keyboard_backspace</i>
+      </div> -->
+      <div class="icon-button" (click)="closefaqs()" matRipple>
+         <i class="material-icons closebackicon button-icon">arrow_back</i>
+        <!--<img src="/assets/images/group-2@2x.png" class="backicon1">-->
+      </div>
+      <h4>Houm FAQ's</h4>
+    </div>
+  </div>
+  <div class="home_bg">
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            What is Houm?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Houm is a truly secure and private place on the internet that you own. It’s your digital home, similar to the
+          home you have in the physical world. As is the case with your home in the real world, Houm is where you keep
+          your digital belongings and do stuff the way you want without worrying about someone seeing or analysing you.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            Why Houm?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Today, you don’t own anything on the Internet!
+
+          You visit various websites or internet products for their services, create accounts, put your information
+          and digital content there, network or communicate with each other, etc. It might seem like you own these
+          accounts and it’s all private, but actually no.
+
+          You are merely getting access to these applications that let you use their products and facilities, and in
+          the process, you put all your data there including your photos, documents, emails, chats, etc. You don’t
+          own your digital belongings that you put there – because you don’t have any ownership over the servers or
+          domains where you put your data, nor do you have any control over them.
+
+          With all your data lying around in different platforms and products and storage spaces not owned by you,
+          you now have to constantly worry about your personal data getting leaked to the world.
+
+          Houm is your private place on the internet that you completely own, and can be accessed only by you from
+          anywhere in the world.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            How can I own a private place on the internet?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>There’s no magic. It’s quite simple.
+
+          The Internet is made up of millions of servers connected to each other. These servers host data and
+          applications that we access and use every day. The owners of these servers can decide who can access and who
+          cannot. The owners set the rules.
+
+          So, for you to own a private place on the internet, you need to own and control a server that is connected to
+          the rest. To access the server from anywhere easily, you need to buy a domain and map it to the server. For
+          example, 1) you buy the domain <a href="https://www.myname.com" target="_blank">www.myname.com</a> and 2) map
+          it to a server that you own and control, are the only
+          two steps you need to take, to own a private place on the internet.
+
+          In simple terms, Houm has automated these two steps for you, since not everyone knows how to do them.
+
+          Anyone can type <a href="https://www.myname.com" target="_blank">www.myname.com</a> in the browser URL field
+          and reach your server. You can decide who can access
+          and who cannot, because, here you are the owner.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            How can I buy my own domain?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>The working of the Internet is coordinated by a body called ICANN[1]. There are ICANN-accredited entities
+          called Domain Registrars who are authorized to Sell Domain Names. You can buy an available domain name from an
+          ICANN accredited Domain Registrar or an authorised reseller.
+
+          Houm Technology Singapore Pte. Ltd. owns an ICANN-accredited Domain Registrar from whom you buy a domain name
+          when you build your Houm. Hence, you have legal ownership of your domain. Houm does not own your domain name,
+          but you do.
+
+          You can buy a domain name for up to 10 years. The price of each domain depends on that specific domain name
+          and there is no fixed standard rate for a domain name.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            OK. How do I get a server?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Once you have a domain name, you need to map it to a server that you own and control. That’s the second and
+          final step that Houm automates for you.
+
+          Houm starts up a fresh server, maps the server IP to your domain name, installs the required applications and
+          security software in your server and hands over the ownership and control of that server to you. Hence we say,
+          you own your digital Houm.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            But I don’t see any server? Where’s my server?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Today, there are two main ways you can own a server: 1) Buy a physical server from your neighbourhood
+          computer store and take it home, or 2) buy a virtual server online from any large data center.
+
+          The server we keep at home gives us a higher sense of security and control. However, that is naïve. The server
+          at home, once connected to the internet is far more vulnerable to online attacks. It is also exposed to
+          possible hazards such as theft, fire, accidental damage or intermittent power fluctuations that can damage the
+          server.
+
+          On the contrary, the server you buy online from any large and reputed data centre such as Amazon Web Services,
+          Google Cloud Platform or DigitalOcean is significantly more secure. From basic security features such as
+          temperature control, uninterrupted power supply, and 24X7 physical security guards, they also provide
+          additional security features such as industry-grade firewall, automatic backup facility, seismic zone
+          safeguards, etc.
+
+          These standards and security measures make buying a server online much more secure, even though you don’t see
+          the server physically.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            But, if my server is in a far-away Data Centre, won't they access my data, and I lose Privacy?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>No. Once you have bought a server online, you can password protect it, so that no one can access the data in
+          it. Additionally, you can install file-level and server-level 256-bit encryption of all data in your server,
+          so that even if the server is physically compromised, the data is not accessible to anyone including the data
+          center folks.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 7" (opened)="setStep(7)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            So, what does Houm do for me?</mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Houm automates the following steps for you:
+
+          1. It helps you buy a domain in your personal name and own it.
+
+          2. Ups a server exclusively for you.
+
+          3. Maps your domain name to your server’s IP number, and publishes DNS, so that you can access your Houm over
+          the internet.
+
+          4. Installs our product application into your server to help you manage your documents, photos, chat with
+          other Houm owners privately, etc., essentially converting your server into your digital home you own on the
+          internet.
+
+          5. Applies security measures such as SSL, Encryption, etc.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 8" (opened)="setStep(8)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            Can Houm employees or engineers access my data?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Houm’s technology is architectured such that, once the above steps are completed, even employees and
+          engineers of Houm cannot access or see the data you store in your Houm. No one can access your Houm but you.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 9" (opened)="setStep(9)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            Do I need to pay for this?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Yes. Houm’s business model is not based on analysing your data and making money from it by influencing you or
+          advertising to you. We don’t and can’t monetize your data. It’s private, personal and is owned by you.
+
+          Hence, you need to pay for your Houm and truly own it. Due to scale, the cost to own a Houm is extremely
+          minimal and is often lesser than the cost of a tub of popcorn, or trip to the Starbucks.
+        </p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 10" (opened)="setStep(10)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            Who is Kaai?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Kaai is your personal digital butler who will keep evolving with time.
+
+          Only if you enable and give permission, Kaai will try to help you organise your Houm. Currently, Kaai can
+          tag your photos and documents so you can easily search them later.
+
+          You can also choose to completely keep Kaai out of your Houm. This won't affect the cost because Kaai is
+          created only to help you, and not use your data for anything else.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 11" (opened)="setStep(11)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            Why do I need a domain to build my Houm? </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Owning a piece of the internet starts with having your own domain name using which you can reach your Houm in
+          the internet world – it’s like your address on the internet. You can search for whatever domain name you want
+          and if available, you can buy it in your name and legally own it. Once you build your Houm, you don’t ever
+          have to come to us – <a href="https://www.houm.me" target="_blank">www.houm.me.</a> Just go to your domain and
+          access your digital home.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 12" (opened)="setStep(12)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            Why do I need a server to build my Houm?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>You need storage space to keep your digital assets and other server resources to run your Houm. You can
+          choose to take it from any of the reputed data centre such as Amazon Web Services, Google Cloud Platform or
+          DigitalOcean that we have integrated with. Currently, we have integrated with DigitalOcean, and we plan to add
+          more options so that you can choose with whom your server is hosted.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 13" (opened)="setStep(13)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            I’ve built my Houm. What next?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Congratulations! Experience the true sense of ownership and control by visiting your domain and move your
+          digital belongings to your Houm. You can directly connect your existing Google and Dropbox accounts or
+          follow a few steps for Facebook and Instagram to bring your documents and photos Houm. You can also upload
+          your digital belongings from your mobile phone or computer. You can even invite others to build their
+          Houm, add them to your neighbourhood or securely chat with them directly.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 14" (opened)="setStep(14)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            What is Neighbourhood? </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Neighbourhood is a private group of people connected to each other through their respective Houms. Once you
+          have a Houm, you can create multiple Neighbourhoods.
+
+          After creating a Neighbourhood, you can chat with the members of that neighbourhood or share files or pictures
+          from the security of your Houm, and all the members in that Neighbourhood will have received it. It goes from
+          your Houm directly to their Houm without anyone intercepting it.
+
+          You can create multiple neighbourhoods depending on the group of people you want in each of your
+          neighbourhood.
+        </p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 15" (opened)="setStep(15)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            How can I build a neighbourhood?</mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>In the Neighbourhood section of your Houm, you can enter the email id or Houm id of the person whom you want
+          to invite to a specific neighbourhood. Once they accept your invitation, they are added to that neighbourhood.
+
+          You can create multiple neighbourhoods depending on the group of people you want in each of your
+          neighbourhood.
+
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 16" (opened)="setStep(16)">
+        <mat-expansion-panel-header class="header">
+          <mat-panel-title class="header">
+            How do I nominate someone to inherit my Houm after me?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Houm will be your most valuable digital asset – a place where all your digital assets are stored. You
+          would want to pass it on to someone at some point of time. Inheritance is the feature of your Houm that
+          can help you nominate your loved ones to take ownership of your Houm after you. You would need to provide
+          their actual complete name and email ID to nominate them.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 17" (opened)="setStep(17)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            What are tags?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>It’s not an easy task to find a document or a photograph when you suddenly need it unless your files are
+          sorted on date and you remember the exact date the file was created. Tagging a file or a group of files
+          helps you find them instantly by simply searching for that tag. Enabling Kaai will help you tag certain
+          important documents and photographs automatically.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 18" (opened)="setStep(18)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            How do I ensure my Houm is always up and running?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Before the Trial Period is over, do make sure you pay and renew your Houm on time. As long as you pay to
+          own the domain and the server, your Houm will be always up and running. The auto-renewal feature will make
+          it easier any day.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 19" (opened)="setStep(19)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            What happens if I don’t renew my Houm?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>“With great power comes great responsibility”. You own your Houm and it’s your responsibility to make sure
+          you renew the domain and hosting space on time. We’ll notify you multiple times when it is up for renewal, but
+          we can’t do much after that. The same applies to auto-renewal as well. We’ll notify you if your payment method
+          is failing.
+
+          In case you fail to renew on time, we will decommission the server and your Houm won’t be live after that.
+          We’ll send multiple emails and urge you to renew or download the entire data before the server is
+          decommissioned. Once the server is decommissioned, you’ll lose your Houm and the data will not be retrievable.
+          We don’t keep a copy of your data. So, data lost is permanently lost.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 20" (opened)="setStep(20)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            How do I delete my Houm?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>You can choose to delete your Houm at any point in time by selecting the ‘Destroy my Houm’ option inside
+          Config. Don’t forget to download your data before deleting your Houm. In case you own a domain, you’ll receive
+          an email explaining how you can transfer the domain to another Registrar and use it for any other purpose.
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 21" (opened)="setStep(21)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            What if my payment has failed?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Please verify the details or try using another card/payment method.</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 22" (opened)="setStep(22)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            Are my card details safe?</mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>HoumPay is PCI-DSS Certified. Your card details are safe & secure. </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 23" (opened)="setStep(23)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            What if payment was successful but the transaction has failed?
+
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>This shouldn’t happen except in the rare scenario of your choice of domain not being available at the time of
+          payment. A refund will be initiated immediately.
+
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 24" (opened)="setStep(24)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            When and how do I increase the storage capacity of my Houm?
+
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>You can always check the amount of storage utilized in your Houm inside Config, and upgrade it whenever you
+          need from the ‘Storage’ section in settings of your Houm. </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 25" (opened)="setStep(25)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            Why am I not able to upload certain types of documents and photos to my Houm?</mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>We endeavor to help you store all your digital files irrespective of the type of file. If there is a specific
+          type of file that you are not able to store, our systems may have deemed that file type dangerous to your
+          Houm. However, do let us know your specific file type on <a href="mailto:help@houm.me">help@houm.me</a>, and
+          we’ll try and help.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 26" (opened)="setStep(26)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            How do I update my contact details?
+
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>You can update them in the ‘Profile’ section inside the Config. Certain changes may be followed by a
+          verification process.
+
+        </p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 27" (opened)="setStep(27)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            How do I change my password?
+
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>You can change your password in the ‘Profile’ section inside the Config.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 28" (opened)="setStep(28)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            Why do I see so many address types in my domain settings?</mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Buying and owning a domain is a serious business. You are the legal owner of that domain. It is mandated by
+          ICANN to give registrant, administrative, technical and billing contact details for a domain owner at the time
+          of registration of a domain. You can also update them from the ‘Domain’ section inside the Config.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 29" (opened)="setStep(29)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            What is Whois information?
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>ICANN mandates to know who is responsible for a domain name. The contact details of the owner are shown
+          against a domain in case someone wants to reach out to the owner. Houm protects your privacy by making it a
+          default feature to mask your contact information.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === 30" (opened)="setStep(30)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="header">
+            What is the need for SSL? </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>SSL certificate ensures the information is encrypted when you’re accessing your Houm. It is an added layer of
+          authentication, security, and protection against phishing.</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="miloaderdiv"><i class="material-icons miconloader">close</i></div>
+</div>
+<!-- Houm-FAQs end-->

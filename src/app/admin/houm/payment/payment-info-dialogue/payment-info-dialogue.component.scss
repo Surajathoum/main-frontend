@@ -1,0 +1,45 @@
+.paymentblock {
+    width: 100%;
+  }
+  
+  .paymentInfo {
+    width: 60%;
+    padding: 1px 10px;
+    background-color: #f992464f;
+    border-bottom: 5px solid #ff9444;
+    box-shadow: 0px 3px 5px 0px #f992464f;
+  }
+  
+  .paymentInfo p {
+    opacity: 0.6;
+    color: #fff;
+    font-weight: 100;
+    font-size: 12px;
+    font-family: Muli-Regular;
+  }
+  .back_nav {
+    width: 40px;
+    height: 20px;
+    background: #d09fff;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    .paymentInfo{
+      width: 100%;
+      padding: 15px 15px;
+      /* padding: 25px; */
+  }
+  .paymentInfo{
+      padding: 5px;
+  }
+  .back_nav{
+    margin: 20% auto;
+    text-align: center;
+    width: 45px;
+    height: 25px;
+    }
+    .fa-times{
+    font-size: 21px;
+    }
+  }

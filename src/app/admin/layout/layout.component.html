@@ -1,0 +1,11 @@
+<div class="layout-container">
+  <main class="main-container">
+    <router-outlet>
+      <div *ngIf="showLoader" class="loader-class">
+        <img src="/assets/images/loading.gif" width="30">
+        <p class="white">Loading... </p>
+        <p class="white" style="margin: 0;">{{contentText}}</p>
+      </div>
+    </router-outlet>
+  </main>
+</div>

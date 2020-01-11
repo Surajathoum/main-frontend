@@ -1,0 +1,286 @@
+<video id="background-video" muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
+  <source [src]="hand_video" type="video/mp4"></video>
+<div #first class="BG">
+  <div class="menuLogo" (click)="loadmenu()" id="logo-menu">
+    <img [attr.src]="'/assets/images/hamburger.png'" class="menu_right">
+  </div>
+  <div class="logo">
+    <img [attr.src]="'/assets/images/houm_beta_main.png'" class="mb20 handimage">
+    <div class="Done-with-everyone">
+      <div class="mb20">
+        <span>
+          Done with everyone prying on your data? <br>
+          It's time you owned a truly private space on the internet
+        </span>
+      </div>
+      <div class="Rounded-Rectangle-1 left-space moon-overlapButton">
+        <button (click)="redirectToReg()" class="button build_now_btn">
+          <span class="ml25 mr25">Build Now And Get 100 GB Free Storage</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="moonbottom">
+    <img [attr.src]="'/assets/images/ellipse-1-copy-6@2x.png'" alt="">
+  </div>
+  <div class="moonright">
+    <img [attr.src]="'/assets/images/ellipse-1-copy-4@2x.png'" alt="">
+  </div>
+  <div class="angle_down" (click)="downScroll()">
+    <div class="arrow"></div>
+  </div>
+  <div *ngIf="showMenu" class="Rectangle_new" id="l2">
+    <div class="back_nav closeiconmain icon-button" (click)="closeloadmenu()" matRipple>
+      <i class="material-icons backicon closebackicon button-icon">close</i>
+    </div>
+    <div class="menuExpand menu_new">
+      <ul>
+        <li (click)="redirect()">Blog</li>
+        <li (click)="openfaqs()">FAQ</li>
+        <li (click)="openaboutus()">About Us</li>
+        <li>Why Houm</li>
+        <li (click)="openprivacy()">Privacy & Legal</li>
+        <li class="email_sapce" (click)="openhelp()">
+          <i class="fa fa-envelope-o" aria-hidden="true"></i> <span> help@houm.me </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Hiding below templates when click menu icon -->
+
+<div *ngIf="!showMenu">
+  <div #scrl class="container" (scroll)="scrollHandler($event)">
+
+    <div *ngIf="!isFour && isEmptyImgDisplay">
+      <img [attr.src]="'assets/images/thumb.png'" alt="" class="slide-in-left ">
+
+      <input type="radio" (click)="doClick(1)" id="i1" name="images" checked />
+      <input type="radio" (click)="doClick(2)"  id="i2" name="images" />
+      <input type="radio" (click)="doClick(3)" id="i3" name="images" />
+
+      <div class="slide_img" id="one">
+        <div class="slideSteps">
+          <h1 class="sideheading slide-up-top">Own 100 GB secure storage in 2 simple steps</h1>
+          <img [attr.src]="'assets/images/details_main.png'" alt="" class="slide-zoomin stepsimage">
+        </div>
+      </div>
+      <div class="slide_img" id="two">
+        <div class="slideSteps">
+          <h1 id="text2" class="sideheading  ">
+            <span class="sidesubheading ">Step 1</span><br>
+            <span>Let us get to </span><br> <span>know you</span></h1>
+          <img id="img2" src="/assets/images/letus.png" alt="" class=" stepsimage">
+        </div>
+      </div>
+
+      <div class="slide_img" id="three">
+        <div class="slideSteps">
+          <h1 id="text3" class="sideheading ">
+            <span class="sidesubheading ">Step 2</span><br>
+            Choose Domain</h1>
+          <img id="img3" src="/assets/images/domain_bg.png" alt="" class="stepsimage">
+        </div>
+      </div>
+
+      <div id="nav_slide">
+        <label for="i1" class="dots" id="dot1"></label>
+        <label for="i2" class="dots" id="dot2"></label>
+        <label for="i3" class="dots" id="dot3"></label>
+      </div>
+    </div>
+    <div *ngIf="isFour">
+      <img [attr.src]="'assets/images/thumb.png'" alt="" class="slide-in-left ">
+      <input type="radio" id="i1" name="images" checked />
+      <input type="radio" id="i2" name="images" />
+      <input type="radio" id="i3" name="images" />
+      <div class="slide_img" id="one">
+        <div class="slideSteps">
+          <h1 id="text1" class="sideheading slide-up-top">Own 100 GB secure storage in 2 simple steps</h1>
+          <img id="img1" src="/assets/images/details_main.png" alt="" class="slide-zoomin stepsimage">
+        </div>
+      </div>
+      <div class="slide_img" id="two">
+        <div class="slideSteps">
+          <h1 id="text2" class="sideheading  ">
+            <span class="sidesubheading ">Step 1</span><br>
+            Let us get to know you</h1>
+          <img id="img2" src="/assets/images/letus.png" alt="" class=" stepsimage">
+        </div>
+      </div>
+
+      <div class="slide_img" id="three">
+        <!-- <img src="assets/images/thumb.png" alt="" class="slide-in-left "> -->
+        <div class="slideSteps">
+          <h1 id="text3" class="sideheading ">
+            <span class="sidesubheading ">Step 2</span><br>
+            Choose Domain</h1>
+          <img id="img3" src="/assets/images/domain_bg.png" alt="" class="stepsimage">
+        </div>
+      </div>
+      <!--
+    <div class="slide_img" id="four">
+      <img src="assets/images/thumb.png" alt="" class="slide-in-left ">
+      <div class="slideSteps">
+
+        <h1 class="sideheading slide-in-fwd-left ">
+          <span class="sidesubheading slide-in-fwd-left ">Step 3</span><br>
+          Enter Details</h1>
+        <img src="assets/images/details_bg.png" alt="" class="slide-in-fwd-right stepsimage">
+      </div>
+    </div> -->
+
+
+      <div id="nav_slide">
+        <label for="i1" class="dots" id="dot1"></label>
+        <label for="i2" class="dots" id="dot2"></label>
+        <label for="i3" class="dots" id="dot3"></label>
+        <!-- <label for="i4" class="dots" id="dot4"></label> -->
+
+      </div>
+    </div>
+  </div>
+  <div #currentSysBg class="currentSysBg">
+
+    <div class="currentsysmain">
+
+      <div class="sys_broken">
+        <div class="The-Current-System-is-Broken">
+          <div class="sysbrokeweb">
+            <div>The Current</div>
+            <div>System</div>
+            <div>is Broken</div>
+          </div>
+          <div class="sysbroke">
+            The Current System is Broken
+          </div>
+        </div>
+      </div>
+
+      <div class="curr_block">
+        <div class="currentSys">
+          <span class="currentSystem_heading">Data Insecurity </span>
+          <p class="currentSystem_content">Data security is progressively failing. Your data is vulnerable, it is under
+            the
+            surveillance of corporations and
+            malicious entities</p>
+        </div>
+
+        <div class="currentSys">
+          <span class="currentSystem_heading">Haywire Data Storage </span>
+          <p class="currentSystem_content">Your data is scattered over various platforms; not single space for all data.
+          </p>
+        </div>
+
+        <div class="currentSys">
+          <span class="currentSystem_heading">User, Not Owner </span>
+          <p class="currentSystem_content">Your do not have legal ownership over your data. You have been forced to be
+            merely
+            a "user" of online services.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="features_main">
+    <section class="sectionPadd features_main-01">
+      <div class="Features-of-Houm">
+        <h2 class="houm_features"><b>Features of Houm</b></h2>
+      </div>
+      <div class="leftAlign clearfix">
+        <div>
+          <h1 #hone class="example"><span class="hover hover-1">Houm does not pry on what you own.</span></h1>
+          <p>Houm Technology Singapore Pte. Ltd. does not snoop around your data and has no rights over your data. Houm
+            does not track your digital footprint and its business model does not monetise your information</p>
+        </div>
+        <div class="features_main-02">
+
+        </div>
+      </div>
+      <div class="rightAlign clearfix">
+        <div>
+          <h1 #htwo class="example"><span class="hover hover-2">Many access points, single authorised person.</span>
+          </h1>
+          <p>You are always home if you own a Houm. You can access your Houm from anywhere in the world but only an
+            authorised entity can enter. Only the people you trust with your address {{ '{domain name}' }} and key
+            {{ '{password}' }} can
+            enter your Houm</p>
+        </div>
+      </div>
+
+    </section>
+    <section class="sectionPadd">
+      <div class="leftAlign clearfix">
+        <div>
+          <h1 #hthree class="example"><span class="hover hover-1">Personal Butler.</span></h1>
+          <p>When you own a Houm, you get your own personal butler, Kaai. Kaai is an AI-enabled personal butler who can
+            organise your data. Kaai cannot record your data or store it, not even with Houm Technology Singapore Pte.
+            Ltd. </p>
+        </div>
+        <div class="features_main-03">
+
+        </div>
+      </div>
+      <div class="rightAlign">
+        <div>
+          <h1 #hfour class="example"><span class="hover hover-2">Inheritance</span></h1>
+          <p>Houm is a place that holds all your digital assets and you can pass on your assets to your loved ones after
+            you.</p>
+        </div>
+      </div>
+
+    </section>
+    <section class="sectionPadd features_main-04">
+      <div class="leftAlign clearfix">
+        <div>
+          <h1 #hfive class="example"><span class="hover hover-1">Interact</span></h1>
+          <p>You can now chat and call your family and friends within the privacy of your Houm. Your interactions will
+            be
+            completely private, not even Houm Technology Singapore Pte. Ltd. will be able to access to your
+            interactions.
+          </p>
+        </div>
+      </div>
+      <div class="rightAlign clearfix">
+        <div>
+          <h1 #hsix class="example"><span class="hover hover-2">100 GB</span></h1>
+          <p class="storageDisplay">Your own Private, Secure Storage</p>
+        </div>
+        <div class="features_main-05">
+        </div>
+      </div>
+      <!-- <div class="mtop"></div> -->
+    </section>
+  </div>
+</div>
+<div class="popcorn_background" [ngStyle]="{'display':(showMenu === true )? 'none':'block'}">
+  <div class="popcorn-main">
+    <div class="popup-left">
+      <div class="Cheaper-than-Popcorn">Cheaper than a</div>
+      <br>
+      <div class="Cheaper-than-Popcorn_text">
+        <a href="" class="typewrite" data-period="2000"
+          data-type='[ "Tub of Popcorn", "Glass of Wine", "Pair of Boxers" ]'>
+        </a>
+      </div>
+    </div>
+    <div class="popup-right">
+      <div class="Rectangle_box">
+        <div class="dollar_cost">
+          <h4 class="Monthly">Monthly</h4>
+          <div>
+            <img [attr.src]="'/assets/images/fingerprint_bg.png'" class="thumbimage">
+          </div>
+          <div>
+            <span class="dollar_value">4.99 $</span>
+            <span class="domain_gb">You get 100 GB on your Domain</span>
+          </div>
+        </div>
+      </div>
+      <div class="starttrail">
+        <button class="Start-Free-Button start_trial_button button" (click)="redirectToReg()"><span class="ml25 mr25">Start Free Trial Now</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="miloaderdiv"><i class="material-icons miconloader">close</i></div>

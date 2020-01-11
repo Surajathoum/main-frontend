@@ -1,0 +1,183 @@
+<article class="flex-container reg_bg" id="webView">
+    <section class="flexLeft" id="leftSection">
+        <div class="title">
+            Status
+        </div>
+
+        <div class="Subtitle">
+            Track your houm building progress
+        </div>
+
+        <div class="circle">
+          <div class="timer-group">
+          <div class="timer minute">
+            <div class="hand"><span></span></div>
+            <div class="hand"><span></span></div>
+          </div>
+        </div>
+            <div class="semi-circle">
+                <div>
+                    <p> {{timerSec | MinuteSecondFormat}}
+                    </p>
+                    <p>&nbsp;
+                    <span *ngIf="timerSec > 60"> Min left </span>
+                    <span *ngIf="timerSec < 60"> Sec left </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <p class="footerText">Making your address, {{houmInfo.name}}
+            Accessible to you.</p>
+
+    </section>
+    <section class="flexRight" id="rightSection">
+        <mat-horizontal-stepper labelPosition="bottom" #stepper>
+            <mat-step>
+                <ng-template matStepLabel class="lablename">Domain Booking</ng-template>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel class="lablename">Adding Storage</ng-template>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel class="lablename">Encryption & Security</ng-template>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel class="lablename">Buidling Houm</ng-template>
+            </mat-step>
+        </mat-horizontal-stepper>
+        <p class="InfoText" *ngIf="isLonger">This is taking longer than expected.</p>
+        <div class="leftInfoContent">
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row1">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67">
+                    <p class="infoName">Your Houm</p>
+                </div>
+                <div fxFlex="20">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row2">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13">
+                    <img src="/assets/images/www_3x.png" class="domain-logos">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67">
+                    <p class="infoVal">{{houmInfo.name}}</p>
+                </div>
+                <div fxFlex="20" align="end">
+                    <img src="/assets/images/success.svg" class="checkMark">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row3">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67">
+                    <p class="infoName">has</p>
+                </div>
+                <div fxFlex="10">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row4">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13">
+                    <img src="/assets/images/hdd_3x.png" class="domain-logos">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67">
+                    <p class="infoVal">{{houmInfo.storage.value}} {{houmInfo.storage.notation}} Storage</p>
+                </div>
+                <div fxFlex="20" align="end">
+                    <img src="/assets/images/success.svg" class="checkMark">
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20" class="payments-info-row5">
+                <div fxFlex="10" fxFlex.sm="15" fxFlex.md="13">
+                </div>
+                <div fxFlex="70" fxFlex.sm="65" fxFlex.md="67">
+                    <p class="infoName">{{houmInfo.storage.type}}</p>
+                </div>
+                <div fxFlex="10">
+                </div>
+            </div>
+        </div>
+
+    </section>
+</article>
+<div class="reg_bg disableOverScroll" id="mbleView">
+    <div class="title"> Last Step! </div>
+    <div class="InfoText"  *ngIf="isLonger" > This is taking longer than expected </div>
+    <div class="Subtitle" > Track your houm building progress </div>
+
+    <mat-horizontal-stepper labelPosition="bottom" #steppermbl>
+        <mat-step>
+            <ng-template matStepLabel>Domain Booking</ng-template>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Adding Storage</ng-template>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Encryption & Security</ng-template>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Buidling Houm</ng-template>
+        </mat-step>
+    </mat-horizontal-stepper>
+    <div class="circle">
+      <div class="timer-group">
+          <div class="timer minute">
+            <div class="hand"><span></span></div>
+            <div class="hand"><span></span></div>
+          </div>
+        </div>
+        <div class="semi-circle">
+            <div>
+                <p>{{timerSec | MinuteSecondFormat}}</p>
+                <p>&nbsp;
+                    <span *ngIf="timerSec > 60">Min left</span>
+                    <span *ngIf="timerSec < 60">Sec left</span>
+                 </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="leftInfoContent">
+        <table id="houmTable">
+            <tr>
+                <td class="tabletd"></td>
+                <td class="tabletdp">
+                    <p class="infoName">Your Houm</p>
+                </td>
+                <td class="widththirty"></td>
+            </tr>
+            <tr>
+                <td> <img src="/assets/images/www_2x.png"></td>
+                <td>
+                    <p class="infoVal">{{houmInfo.name}}</p>
+                </td>
+                <td> <img src="/assets/images/success.svg" class="checkMark"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p class="infoName">has</p>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td> <img src="/assets/images/hdd_2x.png"></td>
+                <td>
+                    <p class="infoVal">{{houmInfo.storage.value}} {{houmInfo.storage.notation}} Storage</p>
+                </td>
+                <td> <img src="/assets/images/success.svg" class="checkMark"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p class="infoName">{{houmInfo.storage.type}}</p>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <p class="footerText">Making your address, {{houmInfo.name}}
+        Accessible to you.</p>
+</div>
