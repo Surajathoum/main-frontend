@@ -13,7 +13,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET }}
       run: |
-        node -i
+        npm i 
         npm install -g @angular/cli@8.0.6
         ng build --prod --vendor-chunk --common-chunk --delete-output-path --buildOptimizer
         mkdir ~/.aws
