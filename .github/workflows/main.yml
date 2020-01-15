@@ -20,6 +20,6 @@ jobs:
         echo -e "[default]\naws_access_key_id = ${{ secrets.dev_access_key }}\naws_secret_access_key = ${{ secrets.dev_secret_key }}" > ~/.aws/credentials
         chmod 600 ~/.aws/credentials
         echo -e "[default]\nregion=us-east-1" > ~/.aws/config
-        apt-get install python-pip
-        pip install awscli
+        sudo apt-get install python-pip
+        sudo pip install awscli
         aws s3 cp dist/ s3://dev-houmme-main-site
