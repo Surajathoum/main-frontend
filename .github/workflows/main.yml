@@ -17,6 +17,9 @@ jobs:
         npm install -g @angular/cli@8.0.6
         ng build --prod --vendor-chunk --common-chunk --delete-output-path --buildOptimizer
         mkdir ~/.aws
-        echo -e "[default]\naws_access_key_id = ${{ secrets.AWS_KEY }}\naws_secret_access_key = ${{ secrets.AWS_SECRET }}" > ~/.aws/credentials
+        echo -e "[default]\naws_access_key_id = ${{ secrets.dev_access_key }}\naws_secret_access_key = ${{ secrets.dev_secret_key }}" > ~/.aws/credentials
         chmod 600 ~/.aws/credentials
         echo -e "[default]\nregion=us-east-1" > ~/.aws/config
+        apt-get install python-pip
+        pip install awscli
+        aws s3 cp dist/ s3://dev-houmme-main-site
