@@ -22,4 +22,4 @@ jobs:
         echo -e "[default]\nregion=us-east-1" > ~/.aws/config
         sudo apt-get install python-pip
         sudo pip install awscli
-        aws s3 cp dist/ s3://dev-houmme-main-site
+        aws s3 cp dist/ s3://dev-houmme-main-site --recursive
