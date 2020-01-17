@@ -1,3 +1,6 @@
+/**
+ * @author Swaminathan Mathivanan <swami@netalytics.com>
+ */
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {BaseRequestService} from '../../../_services/base.service';
@@ -38,6 +41,7 @@ export class CongratulationsComponent implements OnInit {
       this.goToHoum();
     }, 8000);
   }
+
   goToHoum() {
     window.location.href = `https://building-your-houm.me/houm/accesshoum/${this.domain}/${this.domainPin}`;
   }

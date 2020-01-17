@@ -1,3 +1,6 @@
+/**
+ * @author Swaminathan Mathivanan <swami@netalytics.com>
+ */
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { MatStepper, MatHorizontalStepper } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -36,7 +39,7 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     });
     if (!this.domain_pin && localStorage.getItem('domainData') && localStorage.getItem('domainData') !== null) {
-        this.baseService.houmObj = JSON.parse(localStorage.getItem('domainData'))
+        this.baseService.houmObj = JSON.parse(localStorage.getItem('domainData'));
         this.houmInfo.name = this.baseService.houmObj.domainName;
         this.domain_pin = this.baseService.houmObj.domain_pin;
     }
@@ -46,12 +49,17 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
     this.timerTick();
     setTimeout(() => { this.imagestep(); }, 3000);
     this.checkDomain = setInterval(() => { this.domainStatus(); }, 30000);
+    this.nginx_config();
   }
   ngAfterViewInit() {
     /*this.renderer.setStyle(this.circle.nativeElement,
       'stroke-dashoffset', this.initialOffset - ( 1 * ( this.initialOffset / this.timerSec)));*/
   }
-
+  nginx_config() {
+    this.baseService.doRequest('/dev/nginx_config', 'post', {domain: this.houmInfo.name}).subscribe(result => {
+      console.log('webserver config called' + result);
+    });
+  }
   imagestep() {
     if (this.stepperCount === 3) {
       this.stepperInterval = undefined;

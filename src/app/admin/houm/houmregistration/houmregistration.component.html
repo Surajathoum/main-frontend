@@ -85,9 +85,12 @@
                     <div class="errorInput">{{emailErrorMsg}}</div>
                   </div>
                 </div>
-                <input type="email" name="emailId" class="floating-input" autocomplete="new-password"
+                 <input type="email" name="emailId" class="floating-input" autocomplete="new-password"
                   [(ngModel)]="contactObj.emailId" #emailId placeholder="Enter your email address" required
-                  (focusout)="emailCheck(emailId)" (keypress)="setBorderCol(emailId, false)">
+                  (focusout)="emailCheck(emailId)" (ngModelChange)="filterEmailUpdate.next($event)">
+                <!-- <input type="email" name="emailId" class="floating-input" autocomplete="new-password"
+                  [(ngModel)]="contactObj.emailId" #emailId placeholder="Enter your email address" required
+                  (focusout)="emailCheck(emailId)" (keypress)="setBorderCol(emailId, false)"> -->
               </div>
               <div class="floating-label1 floatingsize">
                 <!-- <div class="country">Country *</div> -->
@@ -101,7 +104,7 @@
                   <input list="countryList" placeholder="Select Country" required autocomplete="new-password"
                     [(ngModel)]="contactObj.country" name="country" #country class="floating-input1"
                     (focusout)="countryCheck(country)" (keydown)="updateList($event)">
-                    <!-- <i class="custom--text-icon fa fa-angle-down"></i> -->
+                  <!-- <i class="custom--text-icon fa fa-angle-down"></i> -->
                 </span>
                 <datalist id="countryList" required>
                   <option *ngFor="let country of countryList" [value]="country.name" required>
@@ -165,8 +168,9 @@
           <div *ngIf="showPaidList">
             <div class="searchMain">
               <div class="floating-label">
-                <input class="form-control mat-small" [(ngModel)]="filterText" type="text" name="filterText" autocomplete="off"
-                  id="filterText" placeholder="Search for your domain name" (keyup.enter)="doFilter(filterText)"
+                <input class="form-control mat-small" [(ngModel)]="filterText" type="text" name="filterText"
+                  autocomplete="off" id="filterText" placeholder="Search for your domain name"
+                  (keyup.enter)="doFilter(filterText)"
                   class="floating-input-search floating-search floating-search-bg search">
                 <span *ngIf="usrSearchLoading" class="textbox-loading stage"><span class="dot-flashing"></span></span>
                 <i *ngIf="!usrSearchLoading" class="fa fa-search" aria-hidden="true"
@@ -502,7 +506,7 @@
       <div *ngIf="showmainpage">
         <div class="backiconmain">
           <div class="icon-button payments-back" (click)="backtoMainpage()" matRipple>
-              <i class="material-icons button-icon">arrow_back</i>
+            <i class="material-icons button-icon">arrow_back</i>
           </div>
           <!--<div class="back_nav" (click)="backtoMainpage()">
             <img src="/assets/images/group-2@2x.png" class="backicon">
@@ -571,7 +575,7 @@
           <div class="showDetailsLable">
             <div class="backiconmain">
               <div class="icon-button payments-back" (click)="backtomainpage()" matRipple>
-                  <i class="material-icons button-icon">arrow_back</i>
+                <i class="material-icons button-icon">arrow_back</i>
               </div>
               <!--<div class="back_nav" (click)="backtomainpage()">
                 <img src="/assets/images/group-2@2x.png" class="backicon1">
@@ -607,9 +611,12 @@
                     <span class="labClass">Email Address *</span>
                     <span class="errorInput">{{emailErrorMsg}}</span>
                   </div>
+                  <!-- <input type="email" name="emailId" class="floating-input" autocomplete="off"
+                    [(ngModel)]="contactObj.emailId" appEmailCheck #emailId placeholder="Enter your email address" required
+                    (focusout)="emailCheck(emailId)" (keypress)="setBorderCol(emailId, false)"> -->
                   <input type="email" name="emailId" class="floating-input" autocomplete="off"
-                    [(ngModel)]="contactObj.emailId" #emailId placeholder="Enter your email address" required
-                    (focusout)="emailCheck(emailId)" (keypress)="setBorderCol(emailId, false)">
+                    [(ngModel)]="contactObj.emailId" appEmailCheck #emailId placeholder="Enter your email address"
+                    required (focusout)="emailCheck(emailId)" (ngModelChange)="filterEmailUpdate.next($event)">
                 </div>
                 <!-- <div class="floating-label1 floatingsize countrytop">
                   <div class="floatinginputmain">
@@ -637,11 +644,10 @@
                   <!-- <input list="countryList" placeholder="Select Country" required autocomplete="off"
                     [(ngModel)]="contactObj.country" name="country" #country class="floating-input1"
                     (focusout)="countryCheck(country)" (keydown)="updateList($event)"> -->
-                    <span class="custom-dropdown-arrow">
-                    <input list="countryList" placeholder="Select Country" required
-                    [(ngModel)]="contactObj.country" name="country" class="floating-input"
-                    #country (focusout)="countryCheck(country)"
-                    (keypress)="setBorderCol(country, false)">
+                  <span class="custom-dropdown-arrow">
+                    <input list="countryList" placeholder="Select Country" required [(ngModel)]="contactObj.country"
+                      name="country" class="floating-input" #country (focusout)="countryCheck(country)"
+                      (keypress)="setBorderCol(country, false)">
                     <!-- <i class="custom--text-icon fa fa-angle-down"></i> -->
                   </span>
                   <datalist id="countryList" required>
@@ -663,7 +669,7 @@
                 <div class="letusbar"></div>
                 <div class="letuspercent">0% Completed</div>
               </div>
-               <!-- <div class="letusprogress letusprogressbar mobilebar">
+              <!-- <div class="letusprogress letusprogressbar mobilebar">
                   <div class="letusbar"></div>
                 </div> -->
             </form>
@@ -675,9 +681,9 @@
           <div class="showDetailsLable">
             <div class="backiconmain">
               <div class="icon-button payments-back" (click)="backtoregpage()" matRipple>
-                  <i class="material-icons button-icon">arrow_back</i>
+                <i class="material-icons button-icon">arrow_back</i>
               </div>
-             <!-- <div class="back_nav" (click)="backtoregpage()">
+              <!-- <div class="back_nav" (click)="backtoregpage()">
                 <img src="/assets/images/group-2@2x.png" class="backicon1">
               </div>-->
               <div class="enterdetailsmain">
@@ -744,7 +750,7 @@
           <div class="showDetailsLable">
             <div class="backiconmain">
               <div class="icon-button payments-back" (click)="backtoregpage()" matRipple>
-                  <i class="material-icons button-icon">arrow_back</i>
+                <i class="material-icons button-icon">arrow_back</i>
               </div>
               <!--<div class="back_nav" (click)="backtoregpage()">
                 <img src="/assets/images/group-2@2x.png" class="backicon1">
@@ -788,8 +794,9 @@
             <div *ngIf="showPaidList">
               <div class="searchMain">
                 <div class="floating-label">
-                  <input class="form-control mat-small" [(ngModel)]="filterText" type="text" name="filterText" autocomplete="off"
-                    id="filterText" (keyup.enter)="doFilter(filterText)" placeholder="Search for your domain name"
+                  <input class="form-control mat-small" [(ngModel)]="filterText" type="text" name="filterText"
+                    autocomplete="off" id="filterText" (keyup.enter)="doFilter(filterText)"
+                    placeholder="Search for your domain name"
                     class="floating-input-search floating-search floating-search-bg search">
                   <span *ngIf="usrSearchLoading" class="textbox-loading stage"><span class="dot-flashing"></span></span>
                   <i *ngIf="!usrSearchLoading" class="fa fa-search" aria-hidden="true"

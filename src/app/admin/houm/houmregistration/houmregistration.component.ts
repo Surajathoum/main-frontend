@@ -16,7 +16,7 @@ import { LoaderService } from 'src/app/_services/loader.service';
 })
 export class HoumregistrationComponent implements OnInit {
   constructor(readonly router: Router, private loaderService: LoaderService,
-              private toastr: ToastrService, public baseService: BaseRequestService) {
+    private toastr: ToastrService, public baseService: BaseRequestService) {
     this.filterUpdate.pipe(
       debounceTime(1500),
       distinctUntilChanged())
@@ -35,6 +35,7 @@ export class HoumregistrationComponent implements OnInit {
   selected = '';
   isMobileView = false;
   innerWidth: any;
+  filterEmailUpdate = new Subject<string>();
 
   @ViewChild('firstName', { static: false }) firstName: ElementRef;
   @ViewChild('emailId', { static: false }) emailId: ElementRef;
@@ -1617,10 +1618,10 @@ export class HoumregistrationComponent implements OnInit {
           return false;
         }
         resp.msg.forEach(obj => {
-           obj.discount_price = this.showDiscountPrice(obj);
-           if (obj.discount_price > 0) {
+          obj.discount_price = this.showDiscountPrice(obj);
+          if (obj.discount_price > 0) {
             this.domainsPaidList.push(obj);
-           }
+          }
         });
         this.paidList = this.domainsPaidList;
         this.showloadingdomains = false;
@@ -1666,6 +1667,7 @@ export class HoumregistrationComponent implements OnInit {
 
   saveDetails(data: any) {
     this.showPaidList = false;
+    this.emailErrorMsg = '';
     this.showButtonText = 'SHOW MORE OPTIONS';
     if (this.loaderenable) {
       return false;
@@ -1676,7 +1678,8 @@ export class HoumregistrationComponent implements OnInit {
       this.contactObj = new ContactInfo();
       this.contactObj = data;
       this.loaderenable = true;
-      this.baseService.doRequest(`/dev/check_email`, 'post', {email: data.emailId}).subscribe( resp => {
+      this.emailErrorMsg = '';
+      this.baseService.doRequest(`/dev/check_email`, 'post', { email: data.emailId }).subscribe(resp => {
         if (resp.status) {
           this.loaderenable = false;
           this.showDomainPage = false;
@@ -1727,37 +1730,39 @@ export class HoumregistrationComponent implements OnInit {
     this.baseService.houmObj.currency = this.baseService.countryWiseTax[this.contactObj.country].currency;
     this.baseService.houmObj.indicator = this.baseService.countryWiseTax[this.contactObj.country].indicator;
     this.baseService.doRequest(`/dev/search_domain`,
-      'post', { firstName: data.firstName, lastName: data.lastName, country: this.contactObj.country,
-      page: 0, pageSize: 8, searchtype: 'Free'}).subscribe(resp => {
-        if (resp.status) {
-          this.freeDoaminList = {};
-          resp.msg.forEach(obj => {
-            const domain = obj.domainName.split('.');
-            domain.splice(0, 1);
-            this.freeDoaminList[domain.join('.')] = obj.discount_price;
-          });
-          this.domainsList = resp.msg;
-          if (this.domainsList && this.domainsList.length > 6) {
-            this.domainsList = this.domainsList.slice(0, 6);
-          }
-          this.showloadingdomainsPage = false;
-          this.showloadingdomains = false;
-          this.loaderenable = false;
-          this.showDomainPage = true;
-          this.showProfilePage = false;
-          this.showDetailsPage = false;
-          this.enableprofileTick = true;
-          this.showmainpage = false;
-          this.showregpage = false;
-          this.showdompage = true;
-          this.paidDomainIndex = 0;
-          this.filterText = ''; this.domainsPaidList = [];
-          this.holdSearch = false;
-          this.getPaidDomains(data);
-        } else {
-          this.showloadingdomainsPage = false;
+      'post', {
+      firstName: data.firstName, lastName: data.lastName, country: this.contactObj.country,
+      page: 0, pageSize: 8, searchtype: 'Free'
+    }).subscribe(resp => {
+      if (resp.status) {
+        this.freeDoaminList = {};
+        resp.msg.forEach(obj => {
+          const domain = obj.domainName.split('.');
+          domain.splice(0, 1);
+          this.freeDoaminList[domain.join('.')] = obj.discount_price;
+        });
+        this.domainsList = resp.msg;
+        if (this.domainsList && this.domainsList.length > 6) {
+          this.domainsList = this.domainsList.slice(0, 6);
         }
-      });
+        this.showloadingdomainsPage = false;
+        this.showloadingdomains = false;
+        this.loaderenable = false;
+        this.showDomainPage = true;
+        this.showProfilePage = false;
+        this.showDetailsPage = false;
+        this.enableprofileTick = true;
+        this.showmainpage = false;
+        this.showregpage = false;
+        this.showdompage = true;
+        this.paidDomainIndex = 0;
+        this.filterText = ''; this.domainsPaidList = [];
+        this.holdSearch = false;
+        this.getPaidDomains(data);
+      } else {
+        this.showloadingdomainsPage = false;
+      }
+    });
   }
   enableFreeBuildButton(index, data) {
     this.buildFreebutton = index;
@@ -1770,25 +1775,26 @@ export class HoumregistrationComponent implements OnInit {
   saveFreeDomain(data: any) {
     this.loaderenable = true;
     setTimeout(() => {
-    this.showfreeloader = true;
-    this.baseService.houmObj = data;
-    this.loaderenable = false;
-    this.baseService.houmObj.contact = Object.assign({}, this.contactObj);
-    this.baseService.houmObj.freeDomain = data;
-    console.log(this.baseService.houmObj);
-    this.showDetailsPage = false;
-    this.showDomainPage = false;
-    this.showProfilePage = false;
-    this.enableprofileTick = true;
-    this.enabledomainTick = true;
-    this.router.navigateByUrl('/payment/' + data.domainName);
+      this.showfreeloader = true;
+      const freeData = data;
+      this.baseService.houmObj = data;
+      this.loaderenable = false;
+      this.baseService.houmObj.freeDomain = Object.assign({}, freeData);
+      this.baseService.houmObj.contact = Object.assign({}, this.contactObj);
+      console.log(this.baseService.houmObj);
+      this.showDetailsPage = false;
+      this.showDomainPage = false;
+      this.showProfilePage = false;
+      this.enableprofileTick = true;
+      this.enabledomainTick = true;
+      this.router.navigateByUrl('/payment/' + data.domainName);
     }, 1000);
   }
 
   public getLocation() {
     if (localStorage.getItem('country') !== undefined && localStorage.getItem('country')
-      !== '' && localStorage.getItem('country')  !== null) {
-      this.contactObj.country =  localStorage.getItem('country');
+      !== '' && localStorage.getItem('country') !== null) {
+      this.contactObj.country = localStorage.getItem('country');
       return false;
     }
     /*this.baseService.doRequest('https://extreme-ip-lookup.com/json/', 'get').subscribe(result => {
@@ -1854,16 +1860,16 @@ export class HoumregistrationComponent implements OnInit {
     this.baseService.houmObj.freeDomain = undefined;
     this.loaderenable = true;
     setTimeout(() => {
-    this.baseService.houmObj = data;
-    this.baseService.houmObj.contact = Object.assign({}, this.contactObj);
-    this.showpaidloader = true;
-    this.showDetailsPage = false;
-    this.showDomainPage = true;
-    this.showProfilePage = false;
-    this.enableprofileTick = true;
-    this.enabledomainTick = true;
-    this.showpaidloader = false;
-    this.taxCalculate();
+      this.baseService.houmObj = data;
+      this.baseService.houmObj.contact = Object.assign({}, this.contactObj);
+      this.showpaidloader = true;
+      this.showDetailsPage = false;
+      this.showDomainPage = true;
+      this.showProfilePage = false;
+      this.enableprofileTick = true;
+      this.enabledomainTick = true;
+      this.showpaidloader = false;
+      this.taxCalculate();
     }, 1000);
   }
   backtoMainpage() {
@@ -1923,12 +1929,12 @@ export class HoumregistrationComponent implements OnInit {
       this.showNoDomainText = true;
       return false;
     } else if (value !== undefined && value.match(specialChars)) {
-        this.searchResult = 'Special Characters are not allowed';
-        this.showNoDomainText = true;
-        return false;
+      this.searchResult = 'Special Characters are not allowed';
+      this.showNoDomainText = true;
+      return false;
     }
     if (value !== undefined && value !== '') {
-      if (value.indexOf('.') === -1 ) {
+      if (value.indexOf('.') === -1) {
         const cObj = Object.assign({}, this.contactObj);
         this.paidDomainIndex = 0;
         this.loadPaidList();
@@ -2009,33 +2015,47 @@ export class HoumregistrationComponent implements OnInit {
     }
   }
   emailCheck(ele) {
+    this.emailErrorMsg = '';
     const val = this.trimming_fn(ele.value);
+    // if (!val) {
+    //   this.emailErrorMsg = 'Required';
+    //   this.enableButton = false;
+    //   this.setBorderCol(ele, true);
+    // } else {
+    //   if (val && !String(val).match(this.EmailID_REGX)) {
+    //     ele.focus();
+    //     this.emailErrorMsg = 'Invalid Email';
+    //     this.enableButton = false;
+    //     this.setBorderCol(ele, true);
+    //     return false;
+    //   } else {
+    //     this.setBorderCol(ele, false);
+    //     this.emailErrorMsg = '';
+    //     this.verifyFillInputs();
+    //   }
+    // }
     if (!val) {
       this.emailErrorMsg = 'Required';
       this.enableButton = false;
       this.setBorderCol(ele, true);
     } else {
-      if (val && !String(val).match(this.EmailID_REGX)) {
-        ele.focus();
-        this.emailErrorMsg = 'Invalid Email';
-        this.enableButton = false;
-        this.setBorderCol(ele, true);
-        return false;
-      } else {
-        this.setBorderCol(ele, false);
-        this.emailErrorMsg = '';
-        this.verifyFillInputs();
-        this.baseService.doRequest(`/dev/check_email`, 'post', {email: ele.value}).subscribe( resp => {
-          if (resp.status) {
-            this.emailErrorMsg = '';
+      this.filterEmailUpdate.pipe(
+        debounceTime(3000),
+        distinctUntilChanged())
+        .subscribe(value => {
+          this.baseService.doRequest(`/dev/check_email`, 'post', { email: val }).subscribe(resp => {
+            if (resp.status) {
+              this.emailErrorMsg = '';
 
-          } else {
-            this.emailErrorMsg = resp.msg;
-            this.setBorderCol(this.emailId.nativeElement, true);
-          }
+            } else {
+              this.emailErrorMsg = resp.msg;
+              this.setBorderCol(this.emailId.nativeElement, true);
+              this.verifyFillInputs();
+            }
+          });
         });
-      }
     }
+
   }
   firstCheck(ele) {
     const val = this.trimming_fn(ele.value);
