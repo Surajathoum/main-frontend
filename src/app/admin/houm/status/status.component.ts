@@ -57,7 +57,7 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
       'stroke-dashoffset', this.initialOffset - ( 1 * ( this.initialOffset / this.timerSec)));*/
   }
   nginx_config() {
-    this.baseService.doRequest('${this.apigw}/nginx_config', 'post', {domain: this.houmInfo.name}).subscribe(result => {
+    this.baseService.doRequest(`${this.apigw}/nginx_config`, 'post', {domain: this.houmInfo.name}).subscribe(result => {
       console.log('webserver config called' + result);
     });
   }
