@@ -17,6 +17,7 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
+  apigw = environment.apigw;
   razorpay_client_key = environment.razorpay_live_key;
   stripe_client_key = environment.stripe_live_key;
   constructor(public dialog: MatDialog, private winRef: WindowRef,
@@ -181,7 +182,7 @@ export class PaymentComponent implements OnInit {
   }
   chargeRazorCustomer(resp) {
     this.isTransactionLoading = true;
-    this.baseService.doRequest(`/dev/charge`, 'post', resp)
+    this.baseService.doRequest(`${this.apigw}/charge`, 'post', resp)
       .subscribe(result => {
         if (result.status) {
           console.log('buy_domain');
@@ -200,7 +201,7 @@ export class PaymentComponent implements OnInit {
 
   chargeStripeCustomer(resp) {
     this.isTransactionLoading = true;
-    this.baseService.doRequest(`/dev/charge_stripe`, 'post',
+    this.baseService.doRequest(`${this.apigw}/charge_stripe`, 'post',
       { domain: this.baseService.houmObj.domainName, token: resp.id, totalAmount: this.baseService.houmObj.totalAmount,
         country: this.baseService.houmObj.contact.country })
       .subscribe(result => {
@@ -237,7 +238,7 @@ export class PaymentComponent implements OnInit {
       chargeType: this.baseService.houmObj.chargeType, indicator: tax.indicator, address: contact.country, firstName: contact.firstName,
       totalAmount: this.baseService.houmObj.totalAmount, taxAmount: this.baseService.houmObj.taxAmount
     };
-    this.baseService.doRequest(`/dev/send_invoicemail`, 'post', data).subscribe(result => {
+    this.baseService.doRequest(`${this.apigw}/send_invoicemail`, 'post', data).subscribe(result => {
       console.log(result);
       /*// TODO: Need to remove the below section.
       this.isTransactionSuccess = true;
@@ -252,7 +253,7 @@ export class PaymentComponent implements OnInit {
   buildFreeHoum(data) {
     this.processingMsg = 'Building ' + this.baseService.houmObj.domainName + '. Please wait...';
     this.loaderenable = true; this.isTransactionLoading = true;
-    this.baseService.doRequest(`/dev/buy_domain`, 'post', {
+    this.baseService.doRequest(`${this.apigw}/buy_domain`, 'post', {
       domain: this.baseService.houmObj.domainName,
       email: this.baseService.houmObj.contact.emailId,
       firstName: this.baseService.houmObj.contact.firstName,
@@ -279,7 +280,7 @@ export class PaymentComponent implements OnInit {
   }
   buildHoum() {
     this.isTransactionLoading = true;
-    this.baseService.doRequest(`/dev/buy_domain`, 'post', {
+    this.baseService.doRequest(`${this.apigw}/buy_domain`, 'post', {
       domain: this.baseService.houmObj.domainName,
       email: this.baseService.houmObj.contact.emailId,
       firstName: this.baseService.houmObj.contact.firstName,

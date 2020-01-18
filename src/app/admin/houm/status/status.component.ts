@@ -5,13 +5,14 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit, Ren
 import { MatStepper, MatHorizontalStepper } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseRequestService } from '../../../_services/base.service';
-
+import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-status',
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.scss']
 })
 export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
+  apigw = environment.apigw;
   constructor(private routeParms: ActivatedRoute, private renderer: Renderer2,
               readonly router: Router, public baseService: BaseRequestService) { }
   houmInfo: any;
@@ -56,7 +57,7 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
       'stroke-dashoffset', this.initialOffset - ( 1 * ( this.initialOffset / this.timerSec)));*/
   }
   nginx_config() {
-    this.baseService.doRequest('/dev/nginx_config', 'post', {domain: this.houmInfo.name}).subscribe(result => {
+    this.baseService.doRequest('${this.apigw}/nginx_config', 'post', {domain: this.houmInfo.name}).subscribe(result => {
       console.log('webserver config called' + result);
     });
   }
@@ -103,7 +104,7 @@ export class StatusComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   domainStatus() {
-    this.baseService.doRequest(`/dev/get_domain_status`, 'post', {domain: this.baseService.houmObj.domainName.toLowerCase()})
+    this.baseService.doRequest(`${this.apigw}/get_domain_status`, 'post', {domain: this.baseService.houmObj.domainName.toLowerCase()})
       .subscribe(resp => {
       if (resp.status) {
         this.stepper.selectedIndex = 3;

@@ -8,13 +8,14 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { BaseRequestService } from '../../../_services/base.service';
 import { LoaderService } from 'src/app/_services/loader.service';
-
+import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-houmregistration',
   templateUrl: './houmregistration.component.html',
   styleUrls: ['./houmregistration.component.scss']
 })
 export class HoumregistrationComponent implements OnInit {
+  apigw = environment.apigw;
   constructor(readonly router: Router, private loaderService: LoaderService,
     private toastr: ToastrService, public baseService: BaseRequestService) {
     this.filterUpdate.pipe(
@@ -1604,7 +1605,7 @@ export class HoumregistrationComponent implements OnInit {
     if (this.holdSearch) {
       return false;
     }
-    this.baseService.doRequest(`/dev/search_domain`,
+    this.baseService.doRequest(`${this.apigw}/search_domain`,
       'post', {
       country: data.country,
       firstName: data.firstName, lastName: data.lastName, page: this.paidDomainIndex, searchtype: 'Paid',
@@ -1679,7 +1680,7 @@ export class HoumregistrationComponent implements OnInit {
       this.contactObj = data;
       this.loaderenable = true;
       this.emailErrorMsg = '';
-      this.baseService.doRequest(`/dev/check_email`, 'post', { email: data.emailId }).subscribe(resp => {
+      this.baseService.doRequest(`${this.apigw}/check_email`, 'post', { email: data.emailId }).subscribe(resp => {
         if (resp.status) {
           this.loaderenable = false;
           this.showDomainPage = false;
@@ -1688,7 +1689,7 @@ export class HoumregistrationComponent implements OnInit {
           this.emailErrorMsg = '';
           this.showloadingdomainsPage = true;
           this.showloadingdomains = true;
-          this.baseService.doRequest(`/dev/tax_details`, 'post', { country: this.contactObj.country })
+          this.baseService.doRequest(`${this.apigw}/tax_details`, 'post', { country: this.contactObj.country })
             .subscribe(result => {
               /*const result = {"msg": {"conversionToUsd": 70.75, "currency": "INR", "indicator": "₹", "tax": 18}, "status": true}*/
               if (result.status) {
@@ -1719,7 +1720,7 @@ export class HoumregistrationComponent implements OnInit {
     }
   }
   getFreeTlds() {
-    this.baseService.doRequest(`/dev/get_freetlds`, 'post').subscribe(result => {
+    this.baseService.doRequest(`${this.apigw}/get_freetlds`, 'post').subscribe(result => {
       if (result.status) {
         this.baseService.houmObj.freeTlds = result.msg;
       }
@@ -1729,7 +1730,7 @@ export class HoumregistrationComponent implements OnInit {
     // {'firstName':'priya','lastName':'g', 'country': 'Guinea', 'page': 0, 'pageSize': 14, 'searchtype': 'Free/Paid'}
     this.baseService.houmObj.currency = this.baseService.countryWiseTax[this.contactObj.country].currency;
     this.baseService.houmObj.indicator = this.baseService.countryWiseTax[this.contactObj.country].indicator;
-    this.baseService.doRequest(`/dev/search_domain`,
+    this.baseService.doRequest(`${this.apigw}/search_domain`,
       'post', {
       firstName: data.firstName, lastName: data.lastName, country: this.contactObj.country,
       page: 0, pageSize: 8, searchtype: 'Free'
@@ -1828,7 +1829,7 @@ export class HoumregistrationComponent implements OnInit {
       * this.baseService.houmObj.price) / 100).toFixed(2);
     this.baseService.houmObj.total = +(this.baseService.houmObj.price + this.baseService.houmObj.tax).toFixed(2);
     if (this.contactObj.country === 'India') {
-      this.baseService.doRequest(`/dev/get_order`, 'post',
+      this.baseService.doRequest(`${this.apigw}/get_order`, 'post',
         {
           domain: this.baseService.houmObj.domainName, country: this.contactObj.country,
           totalAmount: this.baseService.houmObj.totalAmount, tax: this.baseService.houmObj.tax
@@ -1953,7 +1954,7 @@ export class HoumregistrationComponent implements OnInit {
         /*this.showloadingdomains = true;*/
         this.paidDomainIndex = 100;
         this.usrSearchLoading = true;
-        this.baseService.doRequest(`/dev/search_userdomain`, 'post', {
+        this.baseService.doRequest(`${this.apigw}/search_userdomain`, 'post', {
           firstName: this.contactObj.firstName, lastName: this.contactObj.lastName, country: this.contactObj.country, domain: value
         }).subscribe(resp => {
           this.usrSearchLoading = false;
@@ -2043,7 +2044,7 @@ export class HoumregistrationComponent implements OnInit {
         debounceTime(3000),
         distinctUntilChanged())
         .subscribe(value => {
-          this.baseService.doRequest(`/dev/check_email`, 'post', { email: val }).subscribe(resp => {
+          this.baseService.doRequest(`${this.apigw}/check_email`, 'post', { email: val }).subscribe(resp => {
             if (resp.status) {
               this.emailErrorMsg = '';
 
